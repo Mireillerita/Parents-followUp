@@ -14,18 +14,16 @@ const Home = () => {
 
   return (
     <div className="flex flex-col md:flex-row h-screen">
-      {/* Left Section */}
       <div
-        className="flex-1 bg-cover bg-center md:bg-cover md:bg-center md:pl-8 md:pr-4 relative"
+        className="flex-1 bg-cover bg-center md:bg-cover md:bg-center md:pl-8 md:pr-4 relative "
         style={{
           backgroundImage:
             currentSlide === 0
               ? 'url(public/photos/background.jpg)'
-              : 'url(public/photos/wallpaper.png)',
+              : 'url(public/photos/classes-4.jpg)',
           marginRight: 0,
         }}
       >
-        {/* Navigation Buttons */}
         <div className="flex items-center justify-between p-10 absolute top-0 bottom-0 right-0 left-0">
           <div className="flex flex-col">
             <p onClick={goToPreviousSlide}>
@@ -36,27 +34,27 @@ const Home = () => {
             </p>
           </div>
         </div>
-        {/* Content */}
+
         <div className="flex flex-col justify-center items-center h-full">
-          <h1 className="text-cyan-500 font-normal font-me text-[20px] md:text-[40px]">
+          <h1 className="text-blue-700 font-normal text-[20px] md:text-[40px]">
             PARENTS-FOLLOW-UP
           </h1>
-          <p className="text-[20px] md:text-[50px]">
+          <p className="text-[20px] md:text-[50px] text-black">
             Home environments that support learning,
           </p>
-          <p className="text-[20px] md:text-[50px]">
+          <p className="text-[20px] text-black md:text-[50px]">
             cultivate brighter futures.
           </p>
-          <p className="text-black text-[14px] md:text-[20px] text-center md:text-left">
+          <p className="text-blue-900 text-[14px] md:text-[20px] px-24text-center md:text-left">
             Help your child revise their studies routine and providing positive
             encouragement. Break tasks into manageable chunks and utilize
             various learning techniques to keep them engaged and motivated.
           </p>
           <div className="flex justify-center md:justify-start mt-10">
-            <button className="bg-cyan-400 text-white text-20 md:text-30 mr-10 py-3 px-6 md:py-5 md:px-10">
+            <button className="bg-blue-700 text-white text-20 md:text-30 mr-10 py-3 px-6 md:py-5 md:px-10">
               READ MORE
             </button>
-            <button className="bg-white text-cyan-400 text-20 md:text-30 py-3 px-6 md:py-5 md:px-10">
+            <button className="bg-white text-blue-700 text-20 md:text-30 py-3 px-6 md:py-5 md:px-10">
               READ MORE
             </button>
           </div>
