@@ -19,10 +19,12 @@ const About = () =>{
     <div className='flex justify-center'>
       <div className='flex-col m-96 text-white'>
     <p className='text-8xl'>About Us</p> 
+    
+    {/* <h1 class="display-3 text-white animated slideInDown">About Us</h1> */}
     <p className='text-xl px-5'>Home/About/Courses/Contact</p>
     </div>
     </div>
-    <div className='flex flex-row justify-evenly'>
+    <div className='flex flex-row justify-evenly mb-52'>
     <div className='text-blue-300 bg-blue-50 hover:scale-125 hover:bg-blue-300 w-56'>
       <div className='flex justify-center'>
     <FaGraduationCap className='w-20 h-20'/>
@@ -33,11 +35,12 @@ const About = () =>{
     <p className='text-black justify-center flex'>sed clita amet diam</p>
 
     </div>
+    
     <div className='text-blue-300 bg-blue-50 hover:scale-125 hover:bg-blue-300 w-56'>
       <div className='flex justify-center'>
     <FaBookOpen className='w-20 h-20'/>
     </div>
-    <h2 className='text-black text-xl  justify-center flex'>Book Library</h2>
+    <h2 className='text-black text-xl  justify-center items-center flex'>Book Library</h2>
     <p className='text-black  justify-center flex'>Diam elitr kasd sed at elitr</p>
     <p className='text-black  justify-center flex'>sed ipsum justo dolor</p>
     <p className='text-black  justify-center flex'>sed clita amet diam</p>
@@ -60,6 +63,11 @@ const About = () =>{
     <p className='text-black  justify-center flex'>sed ipsum justo dolor</p>
     <p className='text-black  justify-center flex'>sed clita amet diam</p>
     </div>
+    </div>
+       <div
+    className="flex-1 bg-cover bg-center bg-no-repeat h-screen"
+    style={{ backgroundImage: 'url(/../public/childbooks.jpg)' }} 
+  >
     </div>
     <div className='flex flex-row justify-evenly mt-20 bg-blue-950 text-white'>
     <div>
@@ -118,7 +126,7 @@ const About = () =>{
    </div>
    </div>
       </div>
-  )
+  );
 }
 
 export default About
