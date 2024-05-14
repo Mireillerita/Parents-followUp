@@ -13,6 +13,7 @@ const Home = () => {
   };
 
   return (
+
     <div className="flex flex-col md:flex-row h-screen">
       <div
         className="flex-1 bg-cover bg-center md:bg-cover md:bg-center md:pl-8 md:pr-4 relative "
@@ -60,6 +61,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+    <div className="bg-black h-[700px] text-white flex flex-row  pt-20 justify-center ">
+
     </div>
   );
 };
