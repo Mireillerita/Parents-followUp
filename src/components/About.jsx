@@ -99,7 +99,7 @@ const About = () =>{
     </div>
     <div>
     <h3 className='text-3xl'>Developers</h3>
-   <div className='flex flex-row hover:bg-red-800'>
+   <div className='flex flex-row hover:bg-red-500'>
     <HiMiniArrowSmallRight className='mt-1'/>
     <p>Documentation</p>
    </div>
