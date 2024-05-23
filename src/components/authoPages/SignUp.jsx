@@ -61,7 +61,7 @@ const Signup = () => {
               placeholder="Full names"
               value={formData.names}
               onChange={handleChange}
-              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-700"
+              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-teal-600"
               required
             />
           </div>
@@ -72,7 +72,7 @@ const Signup = () => {
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-700"
+              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-teal-600"
               required
             />
           </div>
@@ -83,7 +83,7 @@ const Signup = () => {
               placeholder="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-700"
+              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-teal-600"
               required
             />
           </div>
@@ -94,12 +94,12 @@ const Signup = () => {
               placeholder="Confirm password"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-700"
+              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-teal-600"
               required
             />
           </div>
           <button
-            className="w-full py-2 rounded-md bg-blue-700 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="w-full py-2 rounded-md bg-teal-600 text-white hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
             onClick={handleSubmit}
           >
             Sign Up

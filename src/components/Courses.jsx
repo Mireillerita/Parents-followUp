@@ -2,58 +2,145 @@ import React from 'react';
 
 const Courses = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-white py-5 px-4">
-      <div className="pt-20 text-center md:text-left">
-        <h1 className="text-2xl md:text-3xl font-bold">Search class here</h1>
-        <p className="text-gray-500 text-base md:text-lg mt-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-          reiciendis et nulla omnis at qui officia. Recusandae voluptate quia...
-        </p>
+    <div className="w-full pt-36 mb-8">
+      <div className="text-center mb-8 md:mb-12 flex flex-col items-center justify-center">
+        <div className="flex items-center">
+          <span className="block w-10 h-2 bg-teal-900 mx-4"></span>
+          <h1 className="text-teal-900 font-bold font-serif text-[24px] md:text-[32px] lg:text-[40px]">
+            COURSES
+          </h1>
+          <span className="block w-10 h-2 bg-teal-900 mx-4"></span>
+        </div>
       </div>
-      <div className="flex flex-wrap justify-center items-center mt-10 gap-4 md:grid md:grid-cols-3">
-        <div className="flex flex-col hover:scale-110 duration-300 transform hover:shadow-md rounded-lg shadow-sm bg-white">
-          <div className="flex items-center justify-center h-64 bg-red-100 rounded-t-lg">
-            <img
-              src="public/photos/nursary1.png"
-              alt="Level One Course"
-              className="rounded-full h-48 w-48"
-            />
+
+      <div className="flex flex-col bg-white py-2 px-4 md:px-12">
+        <div className="flex flex-wrap justify-center items-center mt-10 gap-4">
+          <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
+            <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
+              <img
+                src="public/photos/nursary1.png"
+                alt="Level One Course"
+                className="rounded-full h-48 w-48"
+              />
+            </div>
+            <div className="px-4 py-6 flex flex-col items-center">
+              <h1 className="text-xl font-bold text-black">Level One</h1>
+              <button className="bg-teal-600 text-white py-2 px-6 rounded-md mt-4 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
+                Find More
+              </button>
+            </div>
           </div>
-          <div className="px-4 py-6 flex flex-col items-center">
-            <h1 className="text-xl font-bold text-black">Level One</h1>
-            <button className="bg-blue-500 text-white py-2 px-6 rounded-md mt-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-              Find More
-            </button>
+
+          <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
+            <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
+              <img
+                src="public/photos/nursary2.png"
+                alt="Level Two Course"
+                className="rounded-full h-48 w-48"
+              />
+            </div>
+            <div className="px-4 py-6 flex flex-col items-center">
+              <h1 className="text-xl font-bold text-black">Level Two</h1>
+              <button className="bg-teal-600 text-white py-2 px-6 rounded-md mt-4 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
+                Find More
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col hover:scale-110 duration-300 transform hover:shadow-md rounded-lg shadow-sm bg-white">
-          <div className="flex items-center justify-center h-64 bg-red-100 rounded-t-lg">
-            <img
-              src="public/photos/nursary2.png"
-              alt="Level Two Course"
-              className="rounded-full h-48 w-48"
-            />
+
+          <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
+            <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
+              <img
+                src="public/child.jpg"
+                alt="Level Three Course"
+                className="rounded-full h-48 w-48"
+              />
+            </div>
+            <div className="px-4 py-6 flex flex-col items-center">
+              <h1 className="text-xl font-bold text-black">Level Three</h1>
+              <button className="bg-teal-600 text-white py-2 px-6 rounded-md mt-4 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
+                Find More
+              </button>
+            </div>
           </div>
-          <div className="px-4 py-6 flex flex-col items-center">
-            <h1 className="text-xl font-bold text-black">Level Two</h1>
-            <button className="bg-blue-500 text-white py-2 px-6 rounded-md mt-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-              Find More
-            </button>
+
+          <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
+            <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
+              <img
+                src="public/photos/logo.png"
+                alt="Level Four Course"
+                className="rounded-full h-48 w-48"
+              />
+            </div>
+            <div className="px-4 py-6 flex flex-col items-center">
+              <h1 className="text-xl font-bold text-black">Level Four</h1>
+              <button className="bg-teal-600 text-white py-2 px-6 rounded-md mt-4 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
+                Find More
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col hover:scale-110 duration-300 transform hover:shadow-md rounded-lg shadow-sm bg-white">
-          <div className="flex items-center justify-center h-64 bg-red-100 rounded-t-lg">
-            <img
-              src="public/photos/image.png"
-              alt="Level Three Course"
-              className="rounded-full h-48 w-48"
-            />
+
+          <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
+            <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
+              <img
+                src="public/childbooks.jpg"
+                alt="Level Five Course"
+                className="rounded-full h-48 w-48"
+              />
+            </div>
+            <div className="px-4 py-6 flex flex-col items-center">
+              <h1 className="text-xl font-bold text-black">Level Five</h1>
+              <button className="bg-teal-600 text-white py-2 px-6 rounded-md mt-4 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
+                Find More
+              </button>
+            </div>
           </div>
-          <div className="px-4 py-6 flex flex-col items-center">
-            <h1 className="text-xl font-bold text-black">Level Three</h1>
-            <button className="bg-blue-500 text-white py-2 px-6 rounded-md mt-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-              Find More
-            </button>
+
+          <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
+            <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
+              <img
+                src="public/photos/image.png"
+                alt="Level Six Course"
+                className="rounded-full h-48 w-48"
+              />
+            </div>
+            <div className="px-4 py-6 flex flex-col items-center">
+              <h1 className="text-xl font-bold text-black">Level Six</h1>
+              <button className="bg-teal-600 text-white py-2 px-6 rounded-md mt-4 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
+                Find More
+              </button>
+            </div>
+          </div>
+
+          <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
+            <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
+              <img
+                src="public/photos/image.png"
+                alt="Level Six Course"
+                className="rounded-full h-48 w-48"
+              />
+            </div>
+            <div className="px-4 py-6 flex flex-col items-center">
+              <h1 className="text-xl font-bold text-black">Level Six</h1>
+              <button className="bg-teal-600 text-white py-2 px-6 rounded-md mt-4 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
+                Find More
+              </button>
+            </div>
+          </div>
+
+          <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
+            <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
+              <img
+                src="public/photos/image.png"
+                alt="Level Six Course"
+                className="rounded-full h-48 w-48"
+              />
+            </div>
+            <div className="px-4 py-6 flex flex-col items-center">
+              <h1 className="text-xl font-bold text-black">Level Six</h1>
+              <button className="bg-teal-600 text-white py-2 px-6 rounded-md mt-4 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
+                Find More
+              </button>
+            </div>
           </div>
         </div>
       </div>

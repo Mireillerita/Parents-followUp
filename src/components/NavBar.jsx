@@ -3,61 +3,100 @@ import { NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 
 const NavBar = () => {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false); // Initialize state
 
   const toggleMenu = () => {
-    setShowMenu(!showMenu);
+    setShowMenu(!showMenu); // Toggle function
   };
 
   return (
-    <section className="bg-white text-blue-500 flex flex-row justify-between items-center fixed w-full top-0 z-50 p-4">
-      <div className="flex flex-row items-center">
-        <img
-          className="h-20 w-20 pr-3 rounded-full"
-          src="public/photos/Logos.png"
-          alt=" rounded-lg"
-        />
-        <h1 className="text-blue-500 text-[30px]">Parents-follow-up</h1>
+    <section className="text-teal-600 flex justify-between items-center fixed w-full z-50 p-4 bg-white shadow-md">
+      <div className="flex items-center">
+        <img className="h-14 w-14" src="public/photos/Primary.png" alt="Logo" />
+        <h1 className="text-teal-600 text-2xl font-semibold pl-4">
+          Parents-follow-up
+        </h1>
       </div>
-      <nav
-        className={`md:flex md:flex-row md:text-black md:gap-7 ${
-          showMenu ? 'flex' : 'hidden'
-        }`}
-      >
-        <div className="md: flex md:flex-col ">
-          <NavLink to="/Home" className="hover:text-blue-500">
-            Home
-          </NavLink>
-        </div>
-        <div className="">
-          <NavLink to="/About" className="hover:text-blue-500">
-            About
-          </NavLink>
-        </div>
-        <div className="">
-          <NavLink to="/Courses" className="hover:text-blue-500">
-            Courses
-          </NavLink>
-        </div>
-        <div className="">
-          <NavLink to="/Pages" className="hover:text-blue-500">
-            Pages
-          </NavLink>
-        </div>
-        <div className="">
-          <NavLink to="/Contact" className="hover:text-blue-500">
-            Contact
-          </NavLink>
-        </div>
-        <div className="bg-blue-500 pl-4 pr-4 pt-2 pb-2 ml-auto mr-0">
-          <NavLink to="/Login" className="text-white hover:bg-blue-500">
-            Login
-          </NavLink>
-        </div>
-      </nav>
+
+      {/* Menu Toggle Button for Small Screens */}
       <div className="md:hidden">
         <FaBars className="text-black cursor-pointer" onClick={toggleMenu} />
       </div>
+
+      {/* Navigation List for Medium and Larger Screens */}
+      <nav className="hidden md:flex md:items-center gap-6">
+        <NavLink to="/" className="hover:text-teal-600 mx-2">
+          Home
+        </NavLink>
+        <NavLink to="/About" className="hover:text-teal-600 mx-2">
+          About
+        </NavLink>
+        <NavLink to="/Courses" className="hover:text-teal-600 mx-2">
+          Courses
+        </NavLink>
+        
+         
+        <NavLink to="/Contact" className="hover:text-teal-600 mx-2">
+          Contact
+        </NavLink>
+        <NavLink to="/Login" className="hover:text-teal-600 mx-2">
+          <button className="bg-teal-600 text-white text-lg rounded-md py-2 px-4 hover:bg-black hover:border-teal-600">
+            Login
+          </button>
+        </NavLink>
+      </nav>
+
+      {/* Conditional Rendering of Navigation List for Small Screens */}
+      {showMenu && (
+        <div className="absolute top-16 right-0 w-full md:hidden bg-white shadow-lg rounded-md p-4">
+          <nav className="flex flex-col gap-4">
+            <NavLink
+              to="/"
+              className="hover:text-teal-600 block"
+              onClick={toggleMenu}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/About"
+              className="hover:text-teal-600 block"
+              onClick={toggleMenu}
+            >
+              About
+            </NavLink>
+            <NavLink
+              to="/Courses"
+              className="hover:text-teal-600 block"
+              onClick={toggleMenu}
+            >
+              Courses
+            </NavLink>
+            {/* <NavLink
+              to="/Pages"
+              className="hover:text-teal-600 block"
+              onClick={toggleMenu}
+            >
+              Pages
+            </NavLink> */}
+            <NavLink
+              to="/Contact"
+              className="hover:text-teal-600 block"
+              onClick={toggleMenu}
+            >
+              Contact
+            </NavLink>
+            <NavLink
+              to="/Login"
+              className="hover:text-teal-600 block"
+              onClick={toggleMenu}
+            >
+              <button className="bg-teal-600 text-white text-lg rounded-md py-2 px-4 w-full hover:bg-black hover:border-teal-600">
+                Login
+              </button>
+            </NavLink>
+          </nav>
+        </div>
+      )}
     </section>
   );
 };
