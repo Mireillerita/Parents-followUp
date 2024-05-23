@@ -14,7 +14,8 @@ import Instructors from './components/shared/Instructors';
 import Course from './components/shared/course/Course';
 import Dcourse from './components/shared/course/Dcourse';
 import LandingPage from './components/LandingPage';
-
+import ResetPassword from './components/authoPages/ResetPassword';
+import LevelOne from './components/LevelOne';
 
 const Layout = () => {
   return (
@@ -33,28 +34,28 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
-              <Route path='/' element={<LandingPage />} />
-              <Route path='/' element={<Home />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/" element={<Home />} />
               <Route path="About" element={<About />} />
               <Route path="Courses" element={<Courses />} />
               <Route path="Contact" element={<Contact />} />
-      
             </Route>
-           
+            <Route element={<Layout />}>
+              <Route path="LevelOne" element={<LevelOne />} />
+            </Route>
+
             <Route>
               <Route path="Login" element={<Login />} />
               <Route path="SignUp" element={<Signup />} />
-              
-              
+              <Route path="ResetPassword" element={<ResetPassword />} />
             </Route>
             <Route path="/" element={<Lay />}>
-            <Route path="dashboard" element={<DashBoard />} /> 
-            <Route path="parent" element={<Parent />} /> 
-            <Route path="course" element={<Course />} /> 
-            <Route path="Dcourse" element={<Dcourse />} />
-            <Route path="instructor" element={<Instructors />} /> 
+              <Route path="dashboard" element={<DashBoard />} />
+              <Route path="parent" element={<Parent />} />
+              <Route path="course" element={<Course />} />
+              <Route path="Dcourse" element={<Dcourse />} />
+              <Route path="instructor" element={<Instructors />} />
             </Route>
-
           </Routes>
         </BrowserRouter>
       </div>

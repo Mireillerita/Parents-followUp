@@ -16,24 +16,21 @@ const Contact = () => {
       </div>
       <div className="grid grid-cols-3 gap-4 mt-10">
         <div className="flex flex-col space-y-6 px-4">
-          <h1 className="text-black text-xl">Get In Touch</h1>
-          <p className="text-black ">
+          <h1 className="text-black text-xl pl-6">Get In Touch</h1>
+          <p className="text-black pl-6 ">
             The contact form is currently inactive. Get a functional and working
             contact form with Ajax & PHP in a few minutes. Just copy and paste
             the files, add a little code and you're done.
           </p>
-          <a href="#" className="text-teal-600 hover:underline">
-            Download Now
-          </a>
         </div>
         <div className="px-4">
           <img
-            src="public/photos/wallpaper.png"
+            src="/public/photos/contact.png"
             alt="Contact"
             className="rounded-lg shadow-md mx-auto sm:w-full md:w-full lg:w-full"
           />
         </div>
-        <div className="grid grid-cols-1 gap-4 px-4">
+        <div className="grid grid-cols-1 gap-4 px-4 pl-4">
           <input
             type="text"
             name="name"

@@ -16,18 +16,24 @@ const About = () => {
 
       <div className="flex flex-col md:flex-row justify-evenly gap-6">
         <div className="text-teal-600 bg-teal-100 hover:bg-teal-600 hover:text-white w-full md:w-80 h-64 p-4 flex flex-col items-center justify-center transition duration-300 ease-in-out">
+          <FaHome className="w-16 h-16 mb-2" />
+          <h2 className="text-black hover:text-white text-xl">Home</h2>
+          <p className="text-black hover:text-white text-center">
+            Welcome to Parents-followUp, your partner in guiding your children's
+            educational journey at home.
+          </p>
+        </div>
+        <div className="text-teal-600 bg-teal-100 hover:bg-teal-600 hover:text-white w-full md:w-80 h-64 p-4 flex flex-col items-center justify-center transition duration-300 ease-in-out">
           <FaGraduationCap className="w-16 h-16 mb-2" />
           <h2 className="text-black hover:text-white text-xl">
             Skilled Students
           </h2>
           <p className="text-black hover:text-white text-center">
-            Diam elitr kasd sed at elitr
+            our mission is to empower parents with
           </p>
+          <p className="text-black hover:text-white text-center"></p>
           <p className="text-black hover:text-white text-center">
-            sed ipsum justo dolor
-          </p>
-          <p className="text-black hover:text-white text-center">
-            sed clita amet diam
+            resources to effectively assist their children with their studies
           </p>
         </div>
 
@@ -35,13 +41,8 @@ const About = () => {
           <FaBookOpen className="w-16 h-16 mb-2" />
           <h2 className="text-black hover:text-white text-xl">Book Library</h2>
           <p className="text-black hover:text-white text-center">
-            Diam elitr kasd sed at elitr
-          </p>
-          <p className="text-black hover:text-white text-center">
-            sed ipsum justo dolor
-          </p>
-          <p className="text-black hover:text-white text-center">
-            sed clita amet diam
+            We offer a variety of resources designed to help parents support
+            their children's education.
           </p>
         </div>
 
@@ -49,27 +50,8 @@ const About = () => {
           <PiChatCircleDotsLight className="w-16 h-16 mb-2" />
           <h2 className="text-black hover:text-white text-xl">Chat</h2>
           <p className="text-black hover:text-white text-center">
-            Diam elitr kasd sed at elitr
-          </p>
-          <p className="text-black hover:text-white text-center">
-            sed ipsum justo dolor
-          </p>
-          <p className="text-black hover:text-white text-center">
-            sed clita amet diam
-          </p>
-        </div>
-
-        <div className="text-teal-600 bg-teal-100 hover:bg-teal-600 hover:text-white w-full md:w-80 h-64 p-4 flex flex-col items-center justify-center transition duration-300 ease-in-out">
-          <FaHome className="w-16 h-16 mb-2" />
-          <h2 className="text-black hover:text-white text-xl">Home</h2>
-          <p className="text-black hover:text-white text-center">
-            Diam elitr kasd sed at elitr
-          </p>
-          <p className="text-black hover:text-white text-center">
-            sed ipsum justo dolor
-          </p>
-          <p className="text-black hover:text-white text-center">
-            sed clita amet diam
+            we offers information about the chat feature for parents to
+            communicate with their child's teacher
           </p>
         </div>
       </div>
@@ -82,15 +64,16 @@ const About = () => {
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <h2 className="text-teal-600 text-2xl mb-4">About Us</h2>
           <p className="text-4xl mb-4">Welcome to Parents-followUp</p>
-          <p className="mb-2">
-            Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu
-            diam amet diam et eos. Clita erat ipsum et lorem et sit.
-          </p>
+
           <div className="mt-5 mb-4">
             <p className="mb-2">
-              Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu
-              diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet
-              lorem sit clita duo justo magna dolore erat amet.
+              Welcome to Parents-followUp, your partner in supporting your
+              children's education at home. Our mission is to empower parents
+              with resources and strategies to enhance learning outside the
+              classroom. We offer expert advice, interactive tools, and a
+              supportive community, along with a chat feature for direc
+              communication with your child's teacher. Together, we can ensure
+              every child reaches their full potential.
             </p>
           </div>
           <div className="mt-9">
@@ -107,11 +90,7 @@ const About = () => {
               <p>Library</p>
             </div>
           </div>
-          <div className="mt-5">
-            <button className="bg-teal-600 text-white px-6 py-3 rounded-md hover:bg-black">
-              Read More
-            </button>
-          </div>
+          <div className="mt-5"></div>
         </div>
       </div>
     </div>

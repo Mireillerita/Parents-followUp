@@ -58,7 +58,7 @@ const Dcourse = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+    <div className="max-w-xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
       <h2 className="mb-4 text-xl font-semibold border-b border-gray-200">
         Courses
       </h2>
@@ -100,20 +100,39 @@ const Dcourse = () => {
           <option value="data science">leve 2</option>
           <option value="machine learning">level 3</option>
         </select>
-        <button
+        <Button
           type="submit"
-          className="bg-teal-500 hover:bg-chocolate-700 text-white font-bold py-2 px-4 rounded"
+          color="teal"
+          ripple="light"
+          className="rounded"
+          fullWidth={true}
         >
           Add Course
-        </button>
+        </Button>
       </form>
       <ul className="mt-4 space-y-2">
-        <li key="test" className="flex justify-between items-center ml-36">
-          {/* <div className="flex  ml-20 space-x-2">
-      <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Edit</button>
-      <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
-    </div> */}
-        </li>
+        {courses.map((course) => (
+          <li key={course.id} className="flex justify-between items-center">
+            <div className="flex space-x-2">
+              <Button
+                color="yellow"
+                ripple="light"
+                className="rounded"
+                onClick={() => updateCourse(course.id)}
+              >
+                Edit
+              </Button>
+              <Button
+                color="red"
+                ripple="light"
+                className="rounded"
+                onClick={() => deleteCourse(course.id)}
+              >
+                Delete
+              </Button>
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );
