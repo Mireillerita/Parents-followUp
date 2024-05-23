@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -24,15 +25,16 @@ const Home = () => {
             each day for review sessions.
           </p>
           <div className="flex flex-col md:flex-row gap-4">
-            
-            <button className="bg-teal-600 text-white text-base md:text-lg lg:text-xl rounded-md py-2 px-6 hover:bg-black hover:border-teal-600">
-              Read more
-            </button>
-            
-            <button className="bg-white text-black text-base md:text-lg lg:text-xl rounded-md py-2 px-6 hover:bg-black hover:border-teal-600">
-              Join now
-            </button>
-            
+            <Link to="/About">
+              <button className="bg-teal-600 text-white text-base md:text-lg lg:text-xl rounded-md py-3 px-8 hover:border-teal-600">
+                Read more
+              </button>
+            </Link>
+            <Link to="/Login">
+              <button className="bg-white text-black text-base md:text-lg lg:text-xl rounded-md py-3 px-9  hover:border-teal-600">
+                Join now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

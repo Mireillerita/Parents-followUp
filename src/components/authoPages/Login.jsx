@@ -84,7 +84,7 @@ const Login = () => {
           </Link>
           <br />
           Forgot Password?{' '}
-          <Link to="/ResetP">
+          <Link to="/ResetPassword">
             <span className="text-red-600">ResetP</span>
           </Link>
         </p>
