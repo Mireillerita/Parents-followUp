@@ -1,68 +1,41 @@
-import React, { useState } from 'react';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import React from 'react';
 
 const Home = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const goToPreviousSlide = () => {
-    setCurrentSlide(currentSlide === 0 ? 1 : 0);
-  };
-
-  const goToNextSlide = () => {
-    setCurrentSlide(currentSlide === 1 ? 0 : 1);
-  };
-
   return (
-
-    <div className="flex flex-col md:flex-row h-screen">
-      <div
-        className="flex-1 bg-cover bg-center md:bg-cover md:bg-center md:pl-8 md:pr-4 relative "
-        style={{
-          backgroundImage:
-            currentSlide === 0
-              ? 'url(public/photos/background.jpg)'
-              : 'url(public/photos/classes-4.jpg)',
-          marginRight: 0,
-        }}
-      >
-        <div className="flex items-center justify-between p-10 absolute top-0 bottom-0 right-0 left-0">
-          <div className="flex flex-col">
-            <p onClick={goToPreviousSlide}>
-              <FaArrowLeft />
-            </p>
-            <p onClick={goToNextSlide}>
-              <FaArrowRight />
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-col justify-center items-center h-full">
-          <h1 className="text-blue-700 font-normal text-[20px] md:text-[40px]">
+    <div className="w-full h-screen pt-33  ">
+      <div className="bg-black relative h-[100%]">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: 'url(public/photos/image.png)' }}
+        ></div>
+        <div className="absolute inset-0 flex flex-col items-start justify-center p-8 md:p-12">
+          <h1 className="text-teal-400 text-2xl md:text-3xl lg:text-4xl mb-4">
             PARENTS-FOLLOW-UP
           </h1>
-          <p className="text-[20px] md:text-[50px] text-black">
-            Home environments that support learning,
+          <p className="text-white text-2xl md:text-4xl lg:text-5xl font-semibold leading-snug mb-4">
+            Empowering Parents to Support Child's Learning Journey
+            <br />
+            Platform
           </p>
-          <p className="text-[20px] text-black md:text-[50px]">
-            cultivate brighter futures.
+          <p className="text-white text-sm md:text-lg font-semibold mb-6">
+            One good practice for helping children revise studies at home is
+            <br />
+            to establish a consistent study routine, allocating specific times
+            each day for review sessions.
           </p>
-          <p className="text-blue-900 text-[14px] md:text-[20px] px-24text-center md:text-left">
-            Help your child revise their studies routine and providing positive
-            encouragement. Break tasks into manageable chunks and utilize
-            various learning techniques to keep them engaged and motivated.
-          </p>
-          <div className="flex justify-center md:justify-start mt-10">
-            <button className="bg-blue-700 text-white text-20 md:text-30 mr-10 py-3 px-6 md:py-5 md:px-10">
-              READ MORE
+          <div className="flex flex-col md:flex-row gap-4">
+            
+            <button className="bg-teal-600 text-white text-base md:text-lg lg:text-xl rounded-md py-2 px-6 hover:bg-black hover:border-teal-600">
+              Read more
             </button>
-            <button className="bg-white text-blue-700 text-20 md:text-30 py-3 px-6 md:py-5 md:px-10">
-              READ MORE
+            
+            <button className="bg-white text-black text-base md:text-lg lg:text-xl rounded-md py-2 px-6 hover:bg-black hover:border-teal-600">
+              Join now
             </button>
+            
           </div>
         </div>
       </div>
-    <div className="bg-black h-[700px] text-white flex flex-row  pt-20 justify-center ">
-
     </div>
   );
 };

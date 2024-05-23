@@ -5,18 +5,14 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4"
+      className="flex flex-col items-center justify-evenly bg-gray-100 pt-40 pb-11"
     >
-      <div className="container mx-auto text-center mt-8 text-blue-700 pt-20">
-        <h1 className="font-bold text-2xl md:text-3xl lg:text-5xl flex justify-center">
-          <span className="h-2 w-10 bg-black"></span>
-          <span className="h-2 w-10 bg-red-500"></span> CONTACT US
-          <span className="h-2 w-10 bg-black"></span>
-          <span className="h-2 w-10 bg-red-500"></span>
+      <div className="text-center mb-8 md:mb-12 flex flex-row items-center justify-center">
+        <span className="block w-10 h-2 bg-teal-900 mx-4"></span>
+        <h1 className="text-teal-900  font-bold font-serif text-[40px]">
+          CONTACT
         </h1>
-        <h2 className="text-black text-xl md:text-2xl lg:text-3xl">
-          Contact For Any Querry
-        </h2>
+        <span className="block w-10 h-2 bg-teal-900 mx-4"></span>
       </div>
       <div className="grid grid-cols-3 gap-4 mt-10">
         <div className="flex flex-col space-y-6 px-4">
@@ -26,7 +22,7 @@ const Contact = () => {
             contact form with Ajax & PHP in a few minutes. Just copy and paste
             the files, add a little code and you're done.
           </p>
-          <a href="#" className="text-blue-500 hover:underline">
+          <a href="#" className="text-teal-600 hover:underline">
             Download Now
           </a>
         </div>
@@ -42,28 +38,28 @@ const Contact = () => {
             type="text"
             name="name"
             placeholder="Your name"
-            className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-teal-600"
           />
           <input
             type="text"
             name="Email"
             placeholder="Your Email"
-            className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-teal-600"
           />
           <input
             type="text"
             name="Subject"
             placeholder="Subject"
-            className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-teal-600"
           />
           <textarea
             type="text"
             name="message"
             placeholder="Message"
-            className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-teal-600"
             rows="4"
           />
-          <button className="bg-blue-700 text-white px-6 py-2 rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          <button className="bg-teal-600 text-white px-6 py-2 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
             Send message
           </button>
         </div>

@@ -50,7 +50,7 @@ const Login = () => {
               type="text"
               id="username"
               placeholder="Email"
-              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-700"
+              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-teal-700"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -61,7 +61,7 @@ const Login = () => {
               type="password"
               id="password"
               placeholder="Password"
-              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-700"
+              className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-teal-700"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -69,11 +69,13 @@ const Login = () => {
               <p className="text-red-500 text-sm">{passwordError}</p>
             )}
           </div>
-          <div>
-            <button className="w-full py-2 rounded-md bg-blue-700 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-              Sign In
-            </button>
-          </div>
+          <Link to="/DashBoard">
+            <div>
+              <button className="w-full py-2 rounded-md bg-teal-600 text-white hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                Sign In
+              </button>
+            </div>
+          </Link>
         </form>
         <p className="mt-3 text-center">
           Already have an account?{' '}
