@@ -14,7 +14,7 @@ const About = () => {
         <span className="block w-10 h-2 bg-teal-900 mx-4"></span>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-evenly gap-6">
+      <div className="flex flex-col md:flex-row justify-evenly gap-6 pl-20 pr-20">
         <div className="text-teal-600 bg-teal-100 hover:bg-teal-600 hover:text-white w-full md:w-80 h-64 p-4 flex flex-col items-center justify-center transition duration-300 ease-in-out">
           <FaHome className="w-16 h-16 mb-2" />
           <h2 className="text-black hover:text-white text-xl">Home</h2>
@@ -58,10 +58,10 @@ const About = () => {
 
       <div className="flex flex-col md:flex-row justify-evenly mt-28 gap-8">
         <div
-          className="bg-center bg-cover w-full md:w-96 h-64 md:h-96"
+          className="bg-center bg-cover w-full md:w-96 h-64 md:h-96 flex pl-5 pr-5"
           style={{ backgroundImage: 'url(/public/childbooks.jpg)' }}
         ></div>
-        <div className="w-full md:w-1/2 flex flex-col justify-center">
+        <div className="w-full md:w-1/2 flex flex-col justify-center pl-20 pr-20">
           <h2 className="text-teal-600 text-2xl mb-4">About Us</h2>
           <p className="text-4xl mb-4">Welcome to Parents-followUp</p>
 

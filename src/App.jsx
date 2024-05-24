@@ -16,6 +16,10 @@ import Dcourse from './components/shared/course/Dcourse';
 import LandingPage from './components/LandingPage';
 import ResetPassword from './components/authoPages/ResetPassword';
 import LevelOne from './components/LevelOne';
+import Play from './components/Parentdash/Play';
+import Dash from './components/Parentdash/Dash';
+import Books from './components/Parentdash/Books';
+import Pinstructor from './components/Parentdash/Pinstructor';
 
 const Layout = () => {
   return (
@@ -55,6 +59,11 @@ const App = () => {
               <Route path="course" element={<Course />} />
               <Route path="Dcourse" element={<Dcourse />} />
               <Route path="instructor" element={<Instructors />} />
+            </Route>
+            <Route path="/" element={<Play />}>
+              <Route path="dash" element={<Dash />} />
+              <Route path="book" element={<Books />} />
+              <Route path="pinstructor" element={<Pinstructor />} />
             </Route>
           </Routes>
         </BrowserRouter>

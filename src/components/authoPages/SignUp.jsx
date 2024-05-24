@@ -19,7 +19,7 @@ const Signup = () => {
     console.log(form);
     await axios({
       method: 'POST',
-      url: 'http://parents-follow-u.onrender.com/parent/user/signup',
+      url: 'https://parents-follow-u.onrender.com/followup/user/signup',
       data: form,
       headers: {
         'Content-Type': 'application/json',
