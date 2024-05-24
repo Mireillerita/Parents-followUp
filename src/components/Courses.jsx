@@ -13,7 +13,7 @@ const Courses = () => {
         </div>
       </div>
 
-      <div className="flex flex-col bg-white py-2 px-4 md:px-12">
+      <div className="flex flex-col bg-white py-2 px-4 md:px-12 pl-20 pr-20">
         <div className="flex flex-wrap justify-center items-center mt-10 gap-4">
           <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
             <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
@@ -82,7 +82,7 @@ const Courses = () => {
           <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
             <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
               <img
-                src="public/childbooks.jpg"
+                src="/public/childbooks.jpg"
                 alt="Level Five Course"
                 className="rounded-full h-48 w-48"
               />
@@ -98,7 +98,7 @@ const Courses = () => {
           <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
             <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
               <img
-                src="public/photos/image.png"
+                src="/public/photos/image.png"
                 alt="Level Six Course"
                 className="rounded-full h-48 w-48"
               />
@@ -114,7 +114,7 @@ const Courses = () => {
           <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
             <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
               <img
-                src="public/photos/image.png"
+                src="/public/photos/Logos.png"
                 alt="Level Six Course"
                 className="rounded-full h-48 w-48"
               />
@@ -130,7 +130,7 @@ const Courses = () => {
           <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80">
             <div className="flex items-center justify-center h-64 bg-teal-100 rounded-t-lg">
               <img
-                src="public/photos/image.png"
+                src="/public/photos/photo2.jpg"
                 alt="Level Six Course"
                 className="rounded-full h-48 w-48"
               />
@@ -142,6 +142,8 @@ const Courses = () => {
               </button>
             </div>
           </div>
+
+          <div className="flex flex-col transform hover:shadow-md rounded-lg shadow-sm bg-white w-full sm:w-80"></div>
         </div>
       </div>
     </div>
