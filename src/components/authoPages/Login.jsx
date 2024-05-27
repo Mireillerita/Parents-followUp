@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios'; // Import axios for HTTP requests
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!username.trim()) {
@@ -32,7 +35,32 @@ const Login = () => {
       setPasswordError('');
     }
 
-    // Implement your login logic here (e.g., send credentials to server)
+    try {
+      const response = await axios.post(
+        'https://parents-follow-u.onrender.com/followup/user/signin',
+        {
+          name: username, // Assuming "name" is equivalent to "username"
+          email: username,
+          password: password,
+        },
+        {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        alert('Login successful!');
+        navigate('/Dashboard'); // Redirect to Dashboard after successful login
+      } else {
+        throw new Error('Login failed');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred during login. Please try again.');
+    }
   };
 
   const isValidEmail = (email) => {
@@ -69,13 +97,12 @@ const Login = () => {
               <p className="text-red-500 text-sm">{passwordError}</p>
             )}
           </div>
-          <Link to="/DashBoard">
-            <div>
-              <button className="w-full py-2 rounded-md bg-teal-600 text-white hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
-                Sign In
-              </button>
-            </div>
-          </Link>
+          <button
+            type="submit"
+            className="w-full py-2 rounded-md bg-teal-600 text-white hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+          >
+            Sign In
+          </button>
         </form>
         <p className="mt-3 text-center">
           Already have an account?{' '}
@@ -85,7 +112,7 @@ const Login = () => {
           <br />
           Forgot Password?{' '}
           <Link to="/ResetPassword">
-            <span className="text-red-600">ResetP</span>
+            <span className="text-red-600">Reset Password</span>
           </Link>
         </p>
       </div>

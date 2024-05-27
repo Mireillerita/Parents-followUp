@@ -20,7 +20,9 @@ import Play from './components/Parentdash/Play';
 import Dash from './components/Parentdash/Dash';
 import Books from './components/Parentdash/Books';
 import Pinstructor from './components/Parentdash/Pinstructor';
-
+import ConfirmNewPass from './components/authoPages/ComfirmNewPass';
+import OTP from './components/authoPages/OTP';
+import EditCourse from './components/shared/course/EditCourse';
 const Layout = () => {
   return (
     <>
@@ -51,12 +53,15 @@ const App = () => {
             <Route>
               <Route path="Login" element={<Login />} />
               <Route path="SignUp" element={<Signup />} />
+              <Route path="OTP" element={<OTP />} />
               <Route path="ResetPassword" element={<ResetPassword />} />
+              <Route path="ConfirmNewPass" element={<ConfirmNewPass />} />
             </Route>
             <Route path="/" element={<Lay />}>
               <Route path="dashboard" element={<DashBoard />} />
               <Route path="parent" element={<Parent />} />
               <Route path="course" element={<Course />} />
+              <Route path="EditCourse/:id" element={<EditCourse />} />
               <Route path="Dcourse" element={<Dcourse />} />
               <Route path="instructor" element={<Instructors />} />
             </Route>

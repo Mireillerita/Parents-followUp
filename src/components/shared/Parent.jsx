@@ -69,8 +69,6 @@ const Dcourse = () => {
           <tr>
             <th className="px-4 py-2">Parent Name</th>
             <th className="px-4 py-2">Email</th>
-            <th className="px-4 py-2">Password</th>
-            <th className="px-4 py-2">Confirm Password</th>
             <th className="px-4 py-2">Telephone</th>
             <th className="px-4 py-2">Child Name</th>
             <th className="px-4 py-2">Child Level</th>
