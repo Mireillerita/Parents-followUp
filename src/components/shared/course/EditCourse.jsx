@@ -1,109 +1,77 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button } from '@material-tailwind/react';
+import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-const Dcourse = () => {
+const EditCourse = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [instructor, setInstructor] = useState('');
   const [category, setCategory] = useState('');
   const [courses, setCourses] = useState([]);
+  const params = useParams();
+  const courseId = params.id;
 
-  const handleAdd = async (e) => {
+  const handlFetchById = async () => {
+    await axios({
+      method: 'GET',
+      url: `https://parents-follow-u.onrender.com/followup/course/get/${courseId}`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+        setTitle(response?.data?.tittle);
+        setDescription(response?.data.description);
+        setInstructor(response?.data.instructor);
+        setCategory(response?.data?.category);
+        setCourses(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    handlFetchById();
+  }, []);
+
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    const formData = {
+    const form = {
       tittle: title,
       description: description,
       instructor: instructor,
       category: category,
     };
 
-    try {
-      const response = await axios.post(
-        'https://parents-follow-u.onrender.com/followup/course/add',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      console.log(response.data);
-      fetchCourses();
-      toast.success('Adding course was successfully.');
-    } catch (error) {
-      console.error(error);
-      toast.error('Failed to add course.');
-    }
-  };
-
-  useEffect(() => {
-    fetchCourses();
-  }, []);
-
-  const fetchCourses = async () => {
-    try {
-      const response = await axios.get(
-        'https://parents-follow-u.onrender.com/followup/course/getAll'
-      );
-      setCourses(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const updateCourse = async (courseId) => {
-    try {
-      const updatedCourse = {
-        tittle: title,
-        description: description,
-        instructor: instructor,
-        category: category,
-      };
-      await axios.put(
+    await axios
+      .put(
         `https://parents-follow-u.onrender.com/followup/course/update/${courseId}`,
-        updatedCourse,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      fetchCourses();
-      toast.success('Course updated successfully!');
-    } catch (error) {
-      console.error(error);
-      toast.error('Failed to update course.');
-    }
-  };
-
-  const deleteCourse = async (courseId) => {
-    try {
-      await axios.delete(
-        `https://parents-follow-u.onrender.com/followup/course/delete/${courseId}`
-      );
-      fetchCourses();
-      toast.success('Course deleted successfully!');
-    } catch (error) {
-      console.error(
-        'Error deleting course:',
-        error.response ? error.response.data : error.message
-      );
-      toast.error('Failed to delete course.');
-    }
+        form
+      )
+      .then((response) => {
+        toast.success('successfully updated');
+        console.log(response.data);
+      })
+      .catch((error) => {
+        toast.error(error);
+        console.log(error);
+      });
   };
 
   return (
     <div className="max-w-xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
-      <h2 className="mb-4 text-xl font-semibold border-b border-gray-200">
-        Courses
+      <ToastContainer />
+      <h2 className="mb-4 text-xl font-semibold border-b border-gray-200 ">
+        Update Courses form
       </h2>
-      <form onSubmit={handleAdd} className="flex flex-col space-y-4">
+      <form className="flex flex-col space-y-4">
         <input
           type="text"
-          name="tittle"
+          name="tittle" // Corrected field name as per API requirement
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Tittle"
@@ -145,18 +113,18 @@ const Dcourse = () => {
           <option value="Grade 9">Grade 9</option>
         </select>
         <Button
+          onClick={handleUpdate}
           type="submit"
           color="teal"
           ripple={true}
           className="rounded"
           fullWidth={true}
         >
-          Add Course
+          Update Course
         </Button>
       </form>
-      <ToastContainer />
       <ul className="mt-4 space-y-2">
-        {courses.map((course) => (
+        {/* {courses.map((course) => (
           <li
             key={course.id}
             className="flex flex-col md:flex-row justify-between items-center"
@@ -166,14 +134,7 @@ const Dcourse = () => {
                 color="yellow"
                 ripple={true}
                 className="rounded"
-                onClick={() => {
-                  setTitle(course.tittle);
-                  setDescription(course.description);
-                  setInstructor(course.instructor);
-                  setCategory(course.category);
-                  // Assuming you want to trigger the update process here
-                  // You might need to implement a method to fill the form with the course details
-                }}
+                onClick={() => updateCourse(course.id)}
               >
                 Edit
               </Button>
@@ -187,10 +148,10 @@ const Dcourse = () => {
               </Button>
             </div>
           </li>
-        ))}
+        ))} */}
       </ul>
     </div>
   );
 };
 
-export default Dcourse;
+export default EditCourse;

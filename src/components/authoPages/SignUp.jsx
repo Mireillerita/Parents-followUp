@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
 const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,78 +20,25 @@ const Signup = () => {
       role: role,
     };
     console.log(form);
-    await axios({
-      method: 'POST',
-      url: 'https://parents-follow-u.onrender.com/followup/user/signup',
-      data: form,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
+
+    try {
+      await axios({
+        method: 'POST',
+        url: 'https://parents-follow-u.onrender.com/followup/user/signup',
+        data: form,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => {
         console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
+        alert('Signup successful!');
+        navigate('/login'); // Redirect to login page after successful signup
       });
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred during signup. Please try again.');
+    }
   };
-  // const [formData, setFormData] = useState({
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  //   confirmPassword: '', // Added confirmPassword field
-  //   role: 'parent', // Default role set to 'parent'
-  // });
-
-  // const handleChange = (event) => {
-  //   setFormData({ ...formData, [event.target.id]: event.target.value });
-  // };
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   if (
-  //     !formData.name ||
-  //     !formData.email ||
-  //     !formData.password ||
-  //     !formData.confirmPassword || // Correct field name
-  //     !formData.role
-  //   ) {
-  //     alert('Please fill in all required fields.');
-  //     return;
-  //   }
-
-  //   if (formData.password !== formData.confirmPassword) {
-  //     alert('Passwords do not match.');
-  //     return;
-  //   }
-
-  //   try {
-  //     console.log('Submitting form with data:', formData); // Log the formData before submitting
-
-  //     const response = await axios.post(
-  //       'http://parents-follow-u.onrender.com/parent/user/signup',
-  //       {
-  //         headers: { 'Content-Type': 'application/json' },
-  //         body: JSON.stringify(formData),
-  //       }
-  //     );
-  //     // changes
-
-  //     if (!response.ok) {
-  //       const errorText = await response.text();
-  //       throw new Error(
-  //         `Error submitting form: ${response.status} ${response.statusText} - ${errorText}`
-  //       );
-  //     }
-
-  //     const data = await response.json();
-  //     console.log('Form submission successful:', data);
-  //   } catch (error) {
-  //     console.error('Error submitting form:', error);
-  //     alert('There was an error signing up. Please try again later.');
-  //   }
-  // };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">

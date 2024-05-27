@@ -9,7 +9,7 @@ import { HiMiniArrowSmallRight } from 'react-icons/hi2';
 
 const Footer = () => {
   return (
-    <div className="bg-teal-950 text-white mt-0 ">
+    <div className="bg-teal-950 text-white mt-0 pl-20 pr-20 justify-center">
       <div className="container mx-auto p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
@@ -73,7 +73,7 @@ const Footer = () => {
               <div
                 className="bg-center w-16 h-16"
                 style={{
-                  backgroundImage: 'rl(/public/photos/photo2.jpg)',
+                  backgroundImage: 'url(/public/photos/photo4.jpg)',
                   backgroundSize: 'cover',
                 }}
               ></div>

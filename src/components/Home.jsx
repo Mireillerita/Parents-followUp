@@ -19,7 +19,7 @@ const Home = () => {
             Platform
           </p>
           <p className="text-white text-sm md:text-lg font-semibold mb-6">
-            One good practice for helping children revise studies at home is
+            The good practice of helping children to revise studies at home is
             <br />
             to establish a consistent study routine, allocating specific times
             each day for review sessions.
