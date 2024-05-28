@@ -52,42 +52,42 @@ const Footer = () => {
               <div
                 className="bg-center w-16 h-16"
                 style={{
-                  backgroundImage: 'url(/public/photos/photo2.jpg)',
+                  backgroundImage: 'url(./photos/photo2.jpg)',
                   backgroundSize: 'cover',
                 }}
               ></div>
               <div
                 className="bg-center w-16 h-16"
                 style={{
-                  backgroundImage: 'url(/public/photos/photo3.jpg)',
+                  backgroundImage: 'url(./photos/photo3.jpg)',
                   backgroundSize: 'cover',
                 }}
               ></div>
               <div
                 className="bg-center w-16 h-16"
                 style={{
-                  backgroundImage: 'url(/public/photos/photo4.jpg)',
+                  backgroundImage: 'url(./photos/photo4.jpg)',
                   backgroundSize: 'cover',
                 }}
               ></div>
               <div
                 className="bg-center w-16 h-16"
                 style={{
-                  backgroundImage: 'url(/public/photos/photo4.jpg)',
+                  backgroundImage: 'url(./photos/photo4.jpg)',
                   backgroundSize: 'cover',
                 }}
               ></div>
               <div
                 className="bg-center w-16 h-16"
                 style={{
-                  backgroundImage: 'url(/public/photos/photo2.jpg)',
+                  backgroundImage: 'url(./photos/photo2.jpg)',
                   backgroundSize: 'cover',
                 }}
               ></div>
               <div
                 className="bg-center w-16 h-16"
                 style={{
-                  backgroundImage: 'url(/public/photos/photo7.jpg)',
+                  backgroundImage: 'url(./photos/photo7.jpg)',
                   backgroundSize: 'cover',
                 }}
               ></div>

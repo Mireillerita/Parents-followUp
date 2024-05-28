@@ -25,7 +25,7 @@ const Contact = () => {
         </div>
         <div className="px-4">
           <img
-            src="/public/photos/contact.png"
+            src="./photos/contact.png"
             alt="Contact"
             className="rounded-lg shadow-md mx-auto sm:w-full md:w-full lg:w-full"
           />
