@@ -41,7 +41,7 @@ const OTP = () => {
     // Assuming the backend expects the entire user object along with the OTP
     try {
       const response = await axios.post(
-        'http://parents-follow-u.onrender.com/followup/user/verify',
+        'https://parents-follow-u.onrender.com/followup/user/verify',
         { ...userDetails, otp }
       );
 
@@ -102,7 +102,7 @@ const OTP = () => {
       <div className="mt-3 py-5 w-full">
         <p>
           Have not received code?{' '}
-          <Link to="/Resetpass">
+          <Link to="/Resetpassword">
             <span className="text-teal-700 w-full">click here</span>
           </Link>
         </p>

@@ -1,5 +1,3 @@
-c;
-
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
@@ -42,10 +40,6 @@ const TableComponent = () => {
     setData([...data, newCourse]);
   };
 
-  const handleDeleteCourse = (id) => {
-    setData(data.filter((course) => course.id !== id));
-  };
-
   const handleUpdateCourse = (updatedCourse) => {
     setData(
       data.map((course) =>
@@ -71,9 +65,22 @@ const TableComponent = () => {
       });
   };
 
+  const handleDeleteCourse = async (id) => {
+    try {
+      await axios.delete(
+        `https://parents-follow-u.onrender.com/followup/course/delete/${id}`
+      );
+      setCourse(course.filter((course) => course._id !== id));
+      console.log('Course deleted successfully');
+    } catch (error) {
+      console.error('Error deleting course:', error);
+    }
+  };
+
   useEffect(() => {
     handleFetchCourse();
   }, []);
+
   return (
     <>
       <div className="flex flex-col w-full h-screen pr-10">
@@ -94,12 +101,6 @@ const TableComponent = () => {
               <table className="min-w-full divide-y divide-gray-200 pr-20">
                 <thead className="bg-gray-50">
                   <tr>
-                    {/* <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Image
-                    </th> */}
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -132,14 +133,9 @@ const TableComponent = () => {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {course.map((course) => (
                     <tr key={course.id}>
-                      {/* <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
-                          <img src={course.posterPath} />
-                        </div>
-                      </td> */}
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                          {course.tittle}
+                          {course.title}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -159,21 +155,16 @@ const TableComponent = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <Link to={`/EditCourse/${course._id}`}>
-                          <button
-                            className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2"
-                            // onClick={() => handleUpdateCourse(course)} // Assuming you implement an update feature
-                          >
+                          <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2">
                             Edit
                           </button>
                         </Link>
-                        <Link>
-                          <button
-                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                            onClick={() => handleDeleteCourse(course.id)}
-                          >
-                            Delete
-                          </button>
-                        </Link>
+                        <button
+                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                          onClick={() => handleDeleteCourse(course._id)}
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}

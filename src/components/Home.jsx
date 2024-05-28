@@ -10,9 +10,11 @@ const Home = () => {
           style={{ backgroundImage: 'url(/public/photos/image.png)' }}
         ></div>
         <div className="absolute inset-0 flex flex-col items-start justify-center p-8 md:p-12">
-          <h1 className="text-teal-400 text-2xl md:text-3xl lg:text-4xl mb-4">
-            PARENTS-FOLLOW-UP
-          </h1>
+          <div className="flex justify-center items-center">
+            <h1 className="text-teal-400 text-2xl md:text-3xl lg:text-4xl mb-4">
+              PARENTS-FOLLOW-UP
+            </h1>
+          </div>
           <p className="text-white text-2xl md:text-4xl lg:text-5xl font-semibold leading-snug mb-4">
             Empowering Parents to Support Child's Learning Journey
             <br />
