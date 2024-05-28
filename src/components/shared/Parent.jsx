@@ -4,15 +4,8 @@ import { Button } from '@material-tailwind/react';
 
 const Dcourse = () => {
   const [courses, setCourses] = useState([]);
-  const [course, setCourse] = useState({
-    parent_name: '',
-    email: '',
-    password: '',
-    confirm_password: '',
-    telephone: '',
-    child_name: '',
-    child_level: '',
-  });
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchCourses();
@@ -20,92 +13,102 @@ const Dcourse = () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('http://actual-api-url/courses'); // Replace with your actual API URL
-      setCourses(response.data);
+      const response = await axios.get(
+        'https://parents-follow-u.onrender.com/followup/parents/list'
+      );
+      const dataArray = Array.isArray(response.data.data)
+        ? response.data.data
+        : [];
+      setCourses(dataArray);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
     }
   };
 
-  const addCourse = async (event) => {
-    event.preventDefault();
+  const fetchCourseById = async (id) => {
     try {
-      await axios.post('http://actual-api-url/courses', course); // Replace with your actual API URL
-      fetchCourses();
+      setIsLoading(true);
+      const response = await axios.get(
+        `https://parents-follow-u.onrender.com/followup/parents/get/${id}`
+      );
+      const courseDetails = {
+        _id: response.data._id,
+        parentName: response.data.parentName,
+        parentEmail: response.data.parentEmail,
+        childName: response.data.childName,
+        category: response.data.category,
+        parentContact: response.data.parentContact,
+      };
+      setSelectedCourse(courseDetails);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
     }
   };
 
-  const updateCourse = async (courseId) => {
-    try {
-      await axios.put('http://actual-api-url/courses/${courseId}, course'); // Corrected URL syntax
-      fetchCourses();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const deleteCourse = async (courseId) => {
-    try {
-      await axios.delete('http://actual-api-url/courses/${courseId}'); // Corrected URL syntax
-      fetchCourses();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleChange = (e) => {
-    setCourse({ ...course, [e.target.name]: e.target.value });
-  };
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center">
+        <h2 className="text-center text-2xl font-semibold mb-4">Loading...</h2>
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="">
       <h2 className="text-center text-2xl font-semibold mb-4">
         Display Parent Details
       </h2>
-      <table className="w-full overflow-x-auto">
-        <thead className="bg-teal-800 text-white">
+      <Button
+        onClick={() => fetchCourseById('6650607b23cf37215f8f7598')}
+        ripple="dark"
+      >
+        Get Parent by ID
+      </Button>
+      <table className="w-full overflow-x-auto mt-4">
+        <thead>
           <tr>
-            <th className="px-4 py-2">Parent Name</th>
-            <th className="px-4 py-2">Email</th>
-            <th className="px-4 py-2">Telephone</th>
-            <th className="px-4 py-2">Child Name</th>
-            <th className="px-4 py-2">Child Level</th>
+            <th>ID</th>
+            <th>Parent Name</th>
+            <th>Email</th>
+            <th>Child Name</th>
+            <th>Category</th>
+            <th>Contact</th>
           </tr>
         </thead>
-        <tbody className="bg-white">
+        <tbody>
           {courses.map((course, index) => (
-            <tr
-              key={index}
-              className="hover:bg-gray-100 transition duration-300 ease-in-out"
-            >
-              <td className="border border-gray-200 px-4 py-2">
-                {course.parent_name}
-              </td>
-              <td className="border border-gray-200 px-4 py-2">
-                {course.email}
-              </td>
-              <td className="border border-gray-200 px-4 py-2">
-                {course.password}
-              </td>
-              <td className="border border-gray-200 px-4 py-2">
-                {course.confirm_password}
-              </td>
-              <td className="border border-gray-200 px-4 py-2">
-                {course.telephone}
-              </td>
-              <td className="border border-gray-200 px-4 py-2">
-                {course.child_name}
-              </td>
-              <td className="border border-gray-200 px-4 py-2">
-                {course.child_level}
-              </td>
+            <tr key={index}>
+              <td>{course._id}</td>
+              <td>{course.parentName}</td>
+              <td>{course.parentEmail}</td>
+              <td>{course.childName}</td>
+              <td>{course.category}</td>
+              <td>{course.parentContact}</td>
             </tr>
           ))}
+          {selectedCourse && (
+            <tr>
+              <td colSpan="6">{selectedCourse._id}</td>
+            </tr>
+          )}
         </tbody>
       </table>
-      {/* Add form and other JSX elements here if needed */}
+      {selectedCourse && (
+        <div className="mt-4 p-4 bg-white shadow-md rounded-lg">
+          <h3>Selected Parent Details:</h3>
+          <p>ID: {selectedCourse._id}</p>
+          <p>Name: {selectedCourse.parentName}</p>
+          <p>Email: {selectedCourse.parentEmail}</p>
+          <p>Child Name: {selectedCourse.childName}</p>
+          <p>Category: {selectedCourse.category}</p>
+          <p>Contact: {selectedCourse.parentContact}</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -57,7 +57,6 @@ const EditCourse = () => {
         console.log(response.data);
       })
       .catch((error) => {
-        toast.error(error);
         console.log(error);
       });
   };

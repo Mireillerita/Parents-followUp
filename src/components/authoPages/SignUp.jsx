@@ -32,7 +32,7 @@ const Signup = () => {
       }).then((response) => {
         console.log(response.data);
         alert('Signup successful!');
-        navigate('/login'); // Redirect to login page after successful signup
+        navigate('/login');
       });
     } catch (error) {
       console.error(error);
@@ -58,7 +58,7 @@ const Signup = () => {
           </div>
           <div>
             <input
-              type="email" // Changed to type "email"
+              type="email"
               id="email"
               placeholder="Email"
               value={email}
@@ -80,10 +80,10 @@ const Signup = () => {
           </div>
           <div>
             <input
-              type="password" // Corrected to type "password"
-              id="confirmPassword" // Corrected id to "confirmPassword"
+              type="password"
+              id="confirmPassword"
               placeholder="Confirm Password"
-              value={confirmPassword} // Correct field value
+              value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-teal-600"
               required
