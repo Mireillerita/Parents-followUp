@@ -12,7 +12,7 @@ const NavBar = () => {
   return (
     <section className="text-teal-600 flex justify-between items-center fixed w-full z-50 p-4 bg-white shadow-md">
       <div className="flex items-center">
-        <img className="h-14 w-14" src="public/photos/Primary.png" alt="Logo" />
+        <img className="h-14 w-14" src="./photos/Primary.png" alt="Logo" />
         <h1 className="text-teal-600 text-2xl font-semibold pl-4">
           Parents-follow-up
         </h1>

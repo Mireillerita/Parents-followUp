@@ -59,7 +59,7 @@ const About = () => {
       <div className="flex flex-col md:flex-row justify-evenly mt-28 gap-8">
         <div
           className="bg-center bg-cover w-full md:w-96 h-64 md:h-96 flex pl-5 pr-5"
-          style={{ backgroundImage: 'url(/public/childbooks.jpg)' }}
+          style={{ backgroundImage: 'url(./childbooks.jpg)' }}
         ></div>
         <div className="w-full md:w-1/2 flex flex-col justify-center pl-20 pr-20">
           <h2 className="text-teal-600 text-2xl mb-4">About Us</h2>
