@@ -7,7 +7,7 @@ const Home = () => {
       <div className="bg-black relative h-[100%]">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: 'url(/public/photos/image.png)' }}
+          style={{ backgroundImage: 'url(./photos/image.png)' }}
         ></div>
         <div className="absolute inset-0 flex flex-col items-start justify-center p-8 md:p-12">
           <div className="flex justify-center items-center">
