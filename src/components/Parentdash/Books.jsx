@@ -49,14 +49,14 @@ const Books = () => {
   return (
     <div>
       {/* Add Book Button */}
-      <Link to="/AddB">
+      {/* <Link to="/AddB">
         <button
           onClick={handleAddBook}
           className="fixed top-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded z-10"
         >
           Add Book
         </button>
-      </Link>
+      </Link> */}
 
       {/* Displaying books from the original URL */}
       <div className="flex flex-wrap justify-center gap-4 p-4 mt-8">

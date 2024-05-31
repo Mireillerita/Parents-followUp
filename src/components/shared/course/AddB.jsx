@@ -10,6 +10,7 @@ const Dcourse = () => {
   const [instructor, setInstructor] = useState('');
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     fetchBooks();
@@ -26,67 +27,42 @@ const Dcourse = () => {
     }
   };
 
-  const fetchBookDetails = async (bookId) => {
-    try {
-      const response = await axios.get(
-        `https://parents-follow-u.onrender.com/followup/book/get/${bookId}`,
-        {
-          headers: {
-            Accept: 'application/json',
-          },
-        }
-      );
-      setSelectedBook(response.data);
-      setTitle(response.data.bookName);
-      setDescription(response.data.description);
-      setInstructor(response.data.writerName);
-      // No category field to set since it's removed
-    } catch (error) {
-      console.error('Error fetching book details:', error);
-    }
+  const fileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
   };
 
   const handleAddBook = async (e) => {
     e.preventDefault();
-    const bookData = {
-      bookName: title,
-      description: description,
-      writerName: instructor,
-      // No category field to include since it's removed
-    };
+    const formData = new FormData();
+    formData.append('bookName', title);
+    formData.append('description', description);
+    formData.append('writerName', instructor);
+    if (image) {
+      const base64Image = await fileToBase64(image);
+      formData.append('image', base64Image, image.name);
+    }
 
     try {
       const response = await axios.post(
         'https://parents-follow-u.onrender.com/followup/book/add',
-        bookData,
+        formData,
         {
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
           },
         }
       );
       console.log(response.data);
       fetchBooks();
-      toast.success('Adding book was successfully.');
+      toast.success('Book added successfully.');
     } catch (error) {
       console.error(error);
       toast.error('Failed to add book.');
-    }
-  };
-
-  const deleteBook = async (bookId) => {
-    try {
-      await axios.delete(
-        `https://parents-follow-u.onrender.com/followup/book/delete/${bookId}`
-      );
-      fetchBooks();
-      toast.success('Book deleted successfully!');
-    } catch (error) {
-      console.error(
-        'Error deleting book:',
-        error.response ? error.response.data : error.message
-      );
-      toast.error('Failed to delete book.');
     }
   };
 
@@ -122,6 +98,12 @@ const Dcourse = () => {
           required
           className="border p-2 rounded w-full"
         />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.files[0])}
+          className="border p-2 rounded w-full"
+        />
         <Button
           type="submit"
           color="teal"
@@ -133,33 +115,7 @@ const Dcourse = () => {
         </Button>
       </form>
       <ToastContainer />
-      <ul className="mt-4 space-y-2">
-        {books.map((book) => (
-          <li
-            key={book._id}
-            className="flex flex-col md:flex-row justify-between items-center"
-          >
-            <div className="flex space-x-2">
-              <Button
-                color="yellow"
-                ripple={true}
-                className="rounded"
-                onClick={() => fetchBookDetails(book._id)}
-              >
-                View/Edit
-              </Button>
-              <Button
-                color="red"
-                ripple={true}
-                className="rounded"
-                onClick={() => deleteBook(book._id)}
-              >
-                Delete
-              </Button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {/* Display list of books */}
     </div>
   );
 };
