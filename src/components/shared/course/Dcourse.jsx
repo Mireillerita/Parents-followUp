@@ -14,7 +14,7 @@ const Dcourse = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     const formData = {
-      tittle: title,
+      title: title,
       description: description,
       instructor: instructor,
       category: category,
@@ -57,7 +57,7 @@ const Dcourse = () => {
   const updateCourse = async (courseId) => {
     try {
       const updatedCourse = {
-        tittle: title,
+        title: title,
         description: description,
         instructor: instructor,
         category: category,
@@ -103,10 +103,10 @@ const Dcourse = () => {
       <form onSubmit={handleAdd} className="flex flex-col space-y-4">
         <input
           type="text"
-          name="tittle"
+          name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="Tittle"
+          placeholder="Title"
           required
           className="border p-2 rounded w-full"
         />
@@ -158,7 +158,7 @@ const Dcourse = () => {
       <ul className="mt-4 space-y-2">
         {courses.map((course) => (
           <li
-            key={course.id}
+            key={course._id}
             className="flex flex-col md:flex-row justify-between items-center"
           >
             <div className="flex space-x-2">
@@ -167,7 +167,7 @@ const Dcourse = () => {
                 ripple={true}
                 className="rounded"
                 onClick={() => {
-                  setTitle(course.tittle);
+                  setTitle(course.title);
                   setDescription(course.description);
                   setInstructor(course.instructor);
                   setCategory(course.category);
@@ -181,7 +181,7 @@ const Dcourse = () => {
                 color="red"
                 ripple={true}
                 className="rounded"
-                onClick={() => deleteCourse(course.id)}
+                onClick={() => deleteCourse(course._id)}
               >
                 Delete
               </Button>
