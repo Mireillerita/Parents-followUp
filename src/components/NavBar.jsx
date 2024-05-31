@@ -31,11 +31,10 @@ const NavBar = () => {
         <NavLink to="/About" className="hover:text-teal-600 mx-2">
           About
         </NavLink>
-        <NavLink to="/Courses" className="hover:text-teal-600 mx-2">
-          Courses
+        <NavLink to="/level" className="hover:text-teal-600 mx-2">
+          Level
         </NavLink>
-        
-         
+
         <NavLink to="/Contact" className="hover:text-teal-600 mx-2">
           Contact
         </NavLink>
@@ -69,7 +68,7 @@ const NavBar = () => {
               className="hover:text-teal-600 block"
               onClick={toggleMenu}
             >
-              Courses
+              Level
             </NavLink>
             {/* <NavLink
               to="/Pages"

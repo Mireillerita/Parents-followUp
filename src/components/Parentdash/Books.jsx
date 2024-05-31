@@ -1,34 +1,119 @@
-import React from 'react';
+// Import React hooks
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+// Define the Books component
 const Books = () => {
-  // Sample data
-  
-  const books = [
-    { id: 1, title: 'English', author: 'DR.jisele', imageUrl: 'https://mtgpublicwp.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/05/08113438/2023_learning_eng_cl1_9789355553430.jpg' },
-    { id: 2, title: 'Physics', author: 'Sandrine', imageUrl: 'https://m.media-amazon.com/images/I/71zIDc0j0OL._AC_UF1000,1000_QL80_.jpg' },
-    { id: 3, title: 'Learning Kinyarwanda', author: 'Mirreilee', imageUrl: 'https://cdn4.volusion.store/sa2d6-yjek4/v/vspfiles/photos/categories/196649.jpg?v-cache=1700777962' },
-    { id: 2, title: 'cartoon', author: 'rebbek', imageUrl: 'https://img.freepik.com/free-vector/hand-drawn-book-cartoon-illustration_52683-130773.jpg' },
-    { id: 1, title: 'English', author: 'DR.jisele', imageUrl: 'https://mtgpublicwp.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/05/08113438/2023_learning_eng_cl1_9789355553430.jpg' },
-    { id: 2, title: 'Physics', author: 'Sandrine', imageUrl: 'https://m.media-amazon.com/images/I/71zIDc0j0OL._AC_UF1000,1000_QL80_.jpg' },
-    { id: 3, title: 'Learning Kinyarwanda', author: 'Mirreilee', imageUrl: 'https://cdn4.volusion.store/sa2d6-yjek4/v/vspfiles/photos/categories/196649.jpg?v-cache=1700777962' },
-    { id: 2, title: 'cartoon', author: 'rebbek', imageUrl: 'https://img.freepik.com/free-vector/hand-drawn-book-cartoon-illustration_52683-130773.jpg' },
-    // Add mor
-    // Add more books as needed
-  ];
-  
+  // Initialize states for storing books from both URLs
+  const [books, setBooks] = useState([]);
+  const [newBooks, setNewBooks] = useState([]);
 
+  // Effect hook to fetch data from both URLs when the component mounts
+  useEffect(() => {
+    // Fetching data from the original URL
+    fetch('https://parents-follow-u.onrender.com/followup/book/list', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setBooks(data.books))
+      .catch((error) => console.error('Error fetching data:', error));
+
+    // Fetching data from the new URL
+    fetch('https://api.example.com/data') // Replace with your actual new URL
+      .then((response) => response.json())
+      .then((data) => setNewBooks(data)) // Assuming the structure matches what you expect
+      .catch((error) => console.error('Error fetching new data:', error));
+  }, []);
+
+  // Placeholder function for updating a book
+  const handleUpdateBook = (bookId) => {
+    console.log(`Updating book with ID: ${bookId}`);
+    // Implement update logic here
+  };
+
+  // Placeholder function for deleting a book
+  const handleDeleteBook = (bookId) => {
+    console.log(`Deleting book with ID: ${bookId}`);
+    // Implement delete logic here
+  };
+
+  // Function to handle adding a new book
+  const handleAddBook = () => {
+    console.log('Adding a new book');
+    // Implement add logic here
+  };
+
+  // Render the component
   return (
-    <div className="flex flex-wrap justify-center gap-4 p-4">
-      {books.map((book) => (
-        <div key={book.id} className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-500 hover:-translate-y-1 hover:shadow-lg w-64">
-          <img className="w-full h-48 object-cover" src={book.imageUrl} alt={book.title} />
-          <div className="p-6">
-            <h3 className="text-xl font-semibold">{book.title}</h3>
-            <p className="mt-2 text-gray-600">{book.author}</p>
+    <div>
+      {/* Add Book Button */}
+      <Link to="/AddB">
+        <button
+          onClick={handleAddBook}
+          className="fixed top-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded z-10"
+        >
+          Add Book
+        </button>
+      </Link>
+
+      {/* Displaying books from the original URL */}
+      <div className="flex flex-wrap justify-center gap-4 p-4 mt-8">
+        {books.map((book) => (
+          <div
+            key={book._id}
+            className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-500 hover:-translate-y-1 hover:shadow-lg w-64"
+          >
+            <img
+              className="w-full h-48 object-cover"
+              src={book.image.url}
+              alt={book.bookName}
+            />
+            <div className="p-6">
+              <h3 className="text-xl font-semibold">{book.bookName}</h3>
+              <p className="mt-2 text-gray-600">By: {book.writerName}</p>
+              <p className="mt-2 text-gray-600">{book.description}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      {/* Displaying books from the new URL */}
+      <div className="flex flex-wrap justify-center gap-4 p-4 mt-8">
+        {newBooks.map((book) => (
+          <div
+            key={book.id}
+            className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-500 hover:-translate-y-1 hover:shadow-lg w-64"
+          >
+            <img
+              className="w-full h-48 object-cover"
+              src={book.image.url}
+              alt={book.bookName}
+            />
+            <div className="p-6">
+              <h3 className="text-xl font-semibold">{book.bookName}</h3>
+              <p className="mt-2 text-gray-600">By: {book.writerName}</p>
+              <p className="mt-2 text-gray-600">{book.description}</p>
+              <button
+                onClick={() => handleUpdateBook(book._id)}
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
+              >
+                Update
+              </button>
+              <button
+                onClick={() => handleDeleteBook(book._id)}
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
+// Export the Books component
 export default Books;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from '../components/Home';
 import About from '../components/About';
-import Courses from '../components/Courses';
+import Level from '../components/Level';
 import Contact from '../components/Contact';
 
 const LandingPage = () => {
@@ -9,7 +9,7 @@ const LandingPage = () => {
     <section>
       <Home />
       <About />
-      <Courses />
+      <Level />
       <Contact />
     </section>
   );
