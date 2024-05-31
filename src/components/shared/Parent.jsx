@@ -63,10 +63,7 @@ const Dcourse = () => {
       <h2 className="text-center text-2xl font-semibold mb-4">
         Display Parent Details
       </h2>
-      <Button
-        onClick={() => fetchCourseById('6650607b23cf37215f8f7598')}
-        ripple="dark"
-      >
+      <Button onClick={() => fetchCourseById()} ripple="dark">
         Get Parent by ID
       </Button>
       <table className="w-full overflow-x-auto mt-4">

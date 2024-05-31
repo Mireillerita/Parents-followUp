@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Outlet, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import About from './components/About';
-import Courses from './components/Courses';
+import Level from './components/Level';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Signup from './components/authoPages/SignUp';
@@ -23,6 +23,8 @@ import Pinstructor from './components/Parentdash/Pinstructor';
 import ConfirmNewPass from './components/authoPages/ComfirmNewPass';
 import OTP from './components/authoPages/OTP';
 import EditCourse from './components/shared/course/EditCourse';
+import AddB from './components/Parentdash/AddB';
+import UpdateB from './components/Parentdash/UpdateB';
 const Layout = () => {
   return (
     <>
@@ -43,7 +45,7 @@ const App = () => {
               <Route path="/" element={<LandingPage />} />
               <Route path="/" element={<Home />} />
               <Route path="About" element={<About />} />
-              <Route path="Courses" element={<Courses />} />
+              <Route path="Level" element={<Level />} />
               <Route path="Contact" element={<Contact />} />
             </Route>
             <Route element={<Layout />}>
@@ -60,7 +62,7 @@ const App = () => {
             <Route path="/" element={<Lay />}>
               <Route path="dashboard" element={<DashBoard />} />
               <Route path="parent" element={<Parent />} />
-              <Route path="course" element={<Course />} />
+              <Route path="Level" element={<Level />} />
               <Route path="EditCourse/:id" element={<EditCourse />} />
               <Route path="Dcourse" element={<Dcourse />} />
               <Route path="instructor" element={<Instructors />} />
@@ -68,6 +70,8 @@ const App = () => {
             <Route path="/" element={<Play />}>
               <Route path="dash" element={<Dash />} />
               <Route path="book" element={<Books />} />
+              <Route path="AddB" element={<AddB />} />
+              <Route path="UpdateB" element={<UpdateB />} />
               <Route path="pinstructor" element={<Pinstructor />} />
             </Route>
           </Routes>
