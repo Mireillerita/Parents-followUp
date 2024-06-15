@@ -8,7 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -23,7 +23,7 @@ const Login = () => {
         'https://parents-follow-u.onrender.com/followup/user/signin',
         {
           name: username,
-          email: username,
+
           password: password,
         },
         {
@@ -35,10 +35,16 @@ const Login = () => {
       );
 
       if (response.status === 200) {
+        const { role } = response.data;
         alert('Login successful!');
-        const userRole = response.data.role; // Adjust according to your actual response structure
-        navigate(userRole === 'admin' ? '/Dashboard' : '/Dash'); // Corrected to navigate to /Dashboard for admins
-        // Redirect based on the role
+        if (role === 'admin') {
+          navigate('/Dashboard');
+        } else if (role === 'parent') {
+          navigate('/dash');
+        } else {
+          navigate('/Dashboard');
+        }
+
       } else {
         throw new Error('Login failed');
       }

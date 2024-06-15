@@ -7,22 +7,36 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState('');
-  const [serverError, setServerError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [role, setRole] = useState('parent'); // Default to 'parent'
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+
+
+    // Basic client-side validation
+    if (!name || !email || !password || !confirmPassword || !role) {
+      alert('All fields are required.');
+      return;
+    }
+    if (password !== confirmPassword) {
+      alert('Passwords do not match.');
+      return;
+    }
+
 
     const form = {
-      name: name,
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
-      role: role,
+      name,
+      email,
+      password,
+      confirmPassword,
+      role,
     };
+
+    console.log('Form data:', form);
+
 
     try {
       const response = await axios.post(
@@ -35,19 +49,16 @@ const Signup = () => {
         }
       );
 
-      console.log('response.data', response.data);
-      // Assuming the response includes a role property
-      const userRole = response.data.role; // Adjust according to your actual response structure
-      navigate(userRole === 'admin' ? '/Dashboard' : '/Dash'); // Redirect based on the role
+      console.log('Response data:', response.data);
+      alert('Signup successful!');
+      navigate('/login');
     } catch (error) {
-      console.error(error);
-      if (error.response) {
-        setServerError(error.response.data.message || 'Registration failed');
-      } else {
-        setServerError('An error occurred. Please try again.');
-      }
-    } finally {
-      setIsLoading(false);
+      console.error(
+        'Error response:',
+        error.response ? error.response.data : error.message
+      );
+      alert('An error occurred during signup. Please try again.');
+
     }
   };
 
@@ -55,7 +66,7 @@ const Signup = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl text-black font-bold pb-4">SIGN UP</h1>
-        {serverError && <p className="text-red-600">{serverError}</p>}
+
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <div>
             <input

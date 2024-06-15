@@ -14,29 +14,43 @@ const Dcourse = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     const formData = {
-      title: title,
+
+      tittle  : title,
+
       description: description,
       instructor: instructor,
       category: category,
     };
-
-    try {
-      const response = await axios.post(
-        'https://parents-follow-u.onrender.com/followup/course/add',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+    await axios({
+      method: 'POST',
+      url: 'https://parents-follow-u.onrender.com/followup/course/add',
+      data: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((response)=>{
       console.log(response.data);
-      fetchCourses();
-      toast.success('Adding course was successfully.');
-    } catch (error) {
-      console.error(error);
-      toast.error('Failed to add course.');
-    }
+    }).catch((error)=>{
+      console.log(error);
+    })
+
+    // try {
+    //   const response = await axios.post(
+    //     'https://parents-follow-u.onrender.com/followup/course/add',
+    //     formData,
+    //     {
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //     }
+    //   );
+    //   console.log("response.data", response.data);
+    //   // fetchCourses();
+    //   toast.success('Adding course was successfully.');
+    // } catch (error) {
+    //   console.error(error);
+    //   toast.error('Failed to add course.');
+    // }
   };
 
   useEffect(() => {

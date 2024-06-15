@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button } from '@material-tailwind/react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 const EditCourse = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -12,6 +13,7 @@ const EditCourse = () => {
   const [courses, setCourses] = useState([]);
   const params = useParams();
   const courseId = params.id;
+  const navigate = useNavigate();
 
   const handlFetchById = async () => {
     await axios({
@@ -53,11 +55,15 @@ const EditCourse = () => {
         form
       )
       .then((response) => {
-        toast.success('successfully updated');
+        setTimeout(() => {
+          toast.success(response.message);
+          navigate('/course');
+        }, 3000);
         console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
+        toast.error(error);
       });
   };
 

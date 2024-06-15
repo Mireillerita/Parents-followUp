@@ -15,7 +15,6 @@ import Course from './components/shared/course/Course';
 import Dcourse from './components/shared/course/Dcourse';
 import LandingPage from './components/LandingPage';
 import ResetPassword from './components/authoPages/ResetPassword';
-import LevelOne from './components/LevelOne';
 import Play from './components/Parentdash/Play';
 import Dash from './components/Parentdash/Dash';
 import Books from './components/Parentdash/Books';
@@ -23,11 +22,13 @@ import Pinstructor from './components/Parentdash/Pinstructor';
 import ConfirmNewPass from './components/authoPages/ComfirmNewPass';
 import OTP from './components/authoPages/OTP';
 import EditCourse from './components/shared/course/EditCourse';
+import Messages from './components/shared/Messages';
 import AddB from './components/shared/course/AddB';
 import UpdateB from './components/Parentdash/UpdateB';
 import BookAd from './components/shared/BookAd';
 import BookDetail from './components/shared/course/BookDetail';
 import AddParent from './components/shared/course/AddParent';
+
 const Layout = () => {
   return (
     <>
@@ -48,13 +49,12 @@ const App = () => {
               <Route path="/" element={<LandingPage />} />
               <Route path="/" element={<Home />} />
               <Route path="About" element={<About />} />
-              <Route path="Level" element={<Level />} />
+
+              <Route path="level" element={<Level />} />
+
               <Route path="Contact" element={<Contact />} />
             </Route>
-            <Route element={<Layout />}>
-              <Route path="LevelOne" element={<LevelOne />} />
-            </Route>
-
+            
             <Route>
               <Route path="Login" element={<Login />} />
               <Route path="SignUp" element={<Signup />} />
@@ -74,6 +74,8 @@ const App = () => {
               <Route path="EditCourse/:id" element={<EditCourse />} />
               <Route path="Dcourse" element={<Dcourse />} />
               <Route path="instructor" element={<Instructors />} />
+              <Route path="instructor" element={<Instructors />} />
+              <Route path="messages" element={<Messages />} />
             </Route>
             <Route path="/" element={<Play />}>
               <Route path="dash" element={<Dash />} />
@@ -84,6 +86,7 @@ const App = () => {
             </Route>
           </Routes>
         </BrowserRouter>
+        
       </div>
     </>
   );
