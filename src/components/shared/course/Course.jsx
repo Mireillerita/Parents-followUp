@@ -31,7 +31,7 @@ const TableComponent = () => {
       category: 'level3',
     },
   ]);
-
+     const [isLoading, setIsLoading] = useState(false);
   const handleAddCourse = () => {
     const newCourse = {
       id: data.length + 1,
@@ -52,6 +52,7 @@ const TableComponent = () => {
   };
 
   const handleFetchCourse = () => {
+    setIsLoading(true);
     axios({
       method: 'GET',
       url: 'https://parents-follow-u.onrender.com/followup/course/list',
@@ -65,6 +66,8 @@ const TableComponent = () => {
       })
       .catch((error) => {
         console.error(error);
+        setIsLoading(false);
+        toast.error("Error fetching course");
       });
   };
 
@@ -130,7 +133,7 @@ const TableComponent = () => {
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-200 uppercase tracking-wider"
                     >
                       Category
                     </th>
@@ -164,12 +167,12 @@ const TableComponent = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <Link to={`/EditCourse/${course._id}`}>
-                          <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2">
+                          <button className="bg-teal-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2">
                             Edit
                           </button>
                         </Link>
                         <button
-                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                          className="bg-teal-800 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                           onClick={() => handleDeleteCourse(course._id)}
                         >
                           Delete

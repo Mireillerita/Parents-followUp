@@ -72,9 +72,9 @@ function DashBoard() {
           <Bar dataKey="count" fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>
-      <Link to="/product" className="underline">
+      {/* <Link to="/product" className="underline">
         go to courses
-      </Link>
+      </Link> */}
     </div>
   );
 }

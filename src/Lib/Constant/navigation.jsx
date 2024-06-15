@@ -4,6 +4,7 @@ import { RiParentLine } from 'react-icons/ri';
 import { PiChalkboardTeacherLight } from 'react-icons/pi';
 import { CiSettings } from 'react-icons/ci';
 import { TfiSupport } from 'react-icons/tfi';
+import { AiOutlineMessage } from "react-icons/ai";
 export const DASHBOARD_SIDEBAR_LINKS = [
   {
     key: 'dashboard',
@@ -41,12 +42,12 @@ export const DASHBOARD_SIDEBAR_LINKS = [
   // 	path: '/transactions',
   // 	icon: <HiOutlineDocumentText />
   // },
-  // {
-  // 	key: 'messages',
-  // 	label: 'Messages',
-  // 	path: '/messages',
-  // 	icon: <HiOutlineAnnotation />
-  // }
+  {
+  	key: 'messages',
+  	label: 'MESSAGES',
+  	path: '/messages',
+  	icon: <AiOutlineMessage />
+  }
 ];
 
 export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [

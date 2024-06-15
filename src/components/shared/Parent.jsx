@@ -29,18 +29,7 @@ const Dcourse = () => {
 
   const fetchParentById = async (id) => {
     try {
-      // setIsLoading(true);
-      // const response = await axios.get(
-      //   `https://parents-follow-u.onrender.com/followup/parents/get/${id}`
-      // );
-      // const parentDetails = {
-      //   _id: response.data._id,
-      //   parentName: response.data.parentName,
-      //   parentEmail: response.data.parentEmail,
-      //   childName: response.data.childName,
-      //   category: response.data.category,
-      //   parentContact: response.data.parentContact,
-      // };
+
       setSelectedParent(parentDetails);
       setIsLoading(false);
     } catch (error) {
