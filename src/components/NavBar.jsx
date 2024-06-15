@@ -32,7 +32,8 @@ const NavBar = () => {
           About
         </NavLink>
         <NavLink to="/level" className="hover:text-teal-600 mx-2">
-          Levels
+
+          Level
 
         </NavLink>
 
