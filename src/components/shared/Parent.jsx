@@ -3,23 +3,23 @@ import axios from 'axios';
 import { Button } from '@material-tailwind/react';
 
 const Dcourse = () => {
-  const [courses, setCourses] = useState([]);
-  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [parents, setParents] = useState([]);
+  const [selectedParent, setSelectedParent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchCourses();
+    fetchParents();
   }, []);
 
-  const fetchCourses = async () => {
+  const fetchParents = async () => {
     try {
       const response = await axios.get(
         'https://parents-follow-u.onrender.com/followup/parents/list'
       );
-      const dataArray = Array.isArray(response.data.data)
-        ? response.data.data
+      const dataArray = Array.isArray(response.data.getParents)
+        ? response.data.getParents
         : [];
-      setCourses(dataArray);
+      setParents(dataArray);
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -27,26 +27,19 @@ const Dcourse = () => {
     }
   };
 
-  const fetchCourseById = async (id) => {
+  const fetchParentById = async (id) => {
     try {
-      setIsLoading(true);
-      const response = await axios.get(
-        `https://parents-follow-u.onrender.com/followup/parents/get/${id}`
-      );
-      const courseDetails = {
-        _id: response.data._id,
-        parentName: response.data.parentName,
-        parentEmail: response.data.parentEmail,
-        childName: response.data.childName,
-        category: response.data.category,
-        parentContact: response.data.parentContact,
-      };
-      setSelectedCourse(courseDetails);
+      setSelectedParent(parentDetails);
       setIsLoading(false);
     } catch (error) {
       console.error(error);
       setIsLoading(false);
     }
+  };
+
+  const handleAddParentClick = () => {
+    console.log('Add Parent button clicked');
+    // Logic for handling the add parent action can be implemented here.
   };
 
   if (isLoading) {
@@ -59,16 +52,16 @@ const Dcourse = () => {
   }
 
   return (
-    <div className="">
+    <div className="relative">
+      <div className="absolute top-4 right-4">
+        <Button onClick={handleAddParentClick} ripple="dark">
+          Add Parent
+        </Button>
+      </div>
       <h2 className="text-center text-2xl font-semibold mb-4">
         Display Parent Details
       </h2>
-      <Button
-        onClick={() => fetchCourseById('6650607b23cf37215f8f7598')}
-        ripple="dark"
-      >
-        Get Parent by ID
-      </Button>
+
       <table className="w-full overflow-x-auto mt-4">
         <thead>
           <tr>
@@ -81,32 +74,32 @@ const Dcourse = () => {
           </tr>
         </thead>
         <tbody>
-          {courses.map((course, index) => (
+          {parents.map((parent, index) => (
             <tr key={index}>
-              <td>{course._id}</td>
-              <td>{course.parentName}</td>
-              <td>{course.parentEmail}</td>
-              <td>{course.childName}</td>
-              <td>{course.category}</td>
-              <td>{course.parentContact}</td>
+              <td>{parent._id}</td>
+              <td>{parent.parentName}</td>
+              <td>{parent.parentEmail}</td>
+              <td>{parent.childName}</td>
+              <td>{parent.category}</td>
+              <td>{parent.parentContact}</td>
             </tr>
           ))}
-          {selectedCourse && (
+          {selectedParent && (
             <tr>
-              <td colSpan="6">{selectedCourse._id}</td>
+              <td colSpan="6">{selectedParent._id}</td>
             </tr>
           )}
         </tbody>
       </table>
-      {selectedCourse && (
-        <div className="mt-4 p-4 bg-white shadow-md rounded-lg">
+      {selectedParent && (
+        <div className="mt-4 p-4 bg-teal-600 shadow-md rounded-lg">
           <h3>Selected Parent Details:</h3>
-          <p>ID: {selectedCourse._id}</p>
-          <p>Name: {selectedCourse.parentName}</p>
-          <p>Email: {selectedCourse.parentEmail}</p>
-          <p>Child Name: {selectedCourse.childName}</p>
-          <p>Category: {selectedCourse.category}</p>
-          <p>Contact: {selectedCourse.parentContact}</p>
+          <p>ID: {selectedParent._id}</p>
+          <p>Name: {selectedParent.parentName}</p>
+          <p>Email: {selectedParent.parentEmail}</p>
+          <p>Child Name: {selectedParent.childName}</p>
+          <p>Category: {selectedParent.category}</p>
+          <p>Contact: {selectedParent.parentContact}</p>
         </div>
       )}
     </div>

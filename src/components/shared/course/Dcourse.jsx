@@ -14,29 +14,41 @@ const Dcourse = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     const formData = {
-      tittle: title,
+      tittle  : title,
       description: description,
       instructor: instructor,
       category: category,
     };
-
-    try {
-      const response = await axios.post(
-        'https://parents-follow-u.onrender.com/followup/course/add',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+    await axios({
+      method: 'POST',
+      url: 'https://parents-follow-u.onrender.com/followup/course/add',
+      data: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((response)=>{
       console.log(response.data);
-      fetchCourses();
-      toast.success('Adding course was successfully.');
-    } catch (error) {
-      console.error(error);
-      toast.error('Failed to add course.');
-    }
+    }).catch((error)=>{
+      console.log(error);
+    })
+
+    // try {
+    //   const response = await axios.post(
+    //     'https://parents-follow-u.onrender.com/followup/course/add',
+    //     formData,
+    //     {
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //     }
+    //   );
+    //   console.log("response.data", response.data);
+    //   // fetchCourses();
+    //   toast.success('Adding course was successfully.');
+    // } catch (error) {
+    //   console.error(error);
+    //   toast.error('Failed to add course.');
+    // }
   };
 
   useEffect(() => {
@@ -57,7 +69,7 @@ const Dcourse = () => {
   const updateCourse = async (courseId) => {
     try {
       const updatedCourse = {
-        tittle: title,
+        title: title,
         description: description,
         instructor: instructor,
         category: category,
@@ -103,10 +115,10 @@ const Dcourse = () => {
       <form onSubmit={handleAdd} className="flex flex-col space-y-4">
         <input
           type="text"
-          name="tittle"
+          name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="Tittle"
+          placeholder="Title"
           required
           className="border p-2 rounded w-full"
         />
@@ -158,7 +170,7 @@ const Dcourse = () => {
       <ul className="mt-4 space-y-2">
         {courses.map((course) => (
           <li
-            key={course.id}
+            key={course._id}
             className="flex flex-col md:flex-row justify-between items-center"
           >
             <div className="flex space-x-2">
@@ -167,7 +179,7 @@ const Dcourse = () => {
                 ripple={true}
                 className="rounded"
                 onClick={() => {
-                  setTitle(course.tittle);
+                  setTitle(course.title);
                   setDescription(course.description);
                   setInstructor(course.instructor);
                   setCategory(course.category);
@@ -181,7 +193,7 @@ const Dcourse = () => {
                 color="red"
                 ripple={true}
                 className="rounded"
-                onClick={() => deleteCourse(course.id)}
+                onClick={() => deleteCourse(course._id)}
               >
                 Delete
               </Button>

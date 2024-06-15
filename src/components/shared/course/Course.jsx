@@ -2,6 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const TableComponent = () => {
   const [course, setCourse] = useState([]);
@@ -28,7 +31,7 @@ const TableComponent = () => {
       category: 'level3',
     },
   ]);
-
+     const [isLoading, setIsLoading] = useState(false);
   const handleAddCourse = () => {
     const newCourse = {
       id: data.length + 1,
@@ -49,6 +52,7 @@ const TableComponent = () => {
   };
 
   const handleFetchCourse = () => {
+    setIsLoading(true);
     axios({
       method: 'GET',
       url: 'https://parents-follow-u.onrender.com/followup/course/list',
@@ -62,18 +66,25 @@ const TableComponent = () => {
       })
       .catch((error) => {
         console.error(error);
+        setIsLoading(false);
+        toast.error("Error fetching course");
       });
   };
 
   const handleDeleteCourse = async (id) => {
-    try {
-      await axios.delete(
-        `https://parents-follow-u.onrender.com/followup/course/delete/${id}`
-      );
-      setCourse(course.filter((course) => course._id !== id));
-      console.log('Course deleted successfully');
-    } catch (error) {
-      console.error('Error deleting course:', error);
+    if(window.confirm('Are you sure you want to delete this course')){
+
+      try {
+        await axios.delete(
+          `https://parents-follow-u.onrender.com/followup/course/delete/${id}`
+        );
+        setCourse(course.filter((course) => course._id !== id));
+        toast.success("successfully deleted")
+        console.log('Course deleted successfully');
+      } catch (error) {
+        console.error('Error deleting course:', error);
+        toast.error("Error deleting course");
+      }
     }
   };
 
@@ -84,10 +95,11 @@ const TableComponent = () => {
   return (
     <>
       <div className="flex flex-col w-full h-screen pr-10">
+      <ToastContainer />
         <Link to="/Dcourse">
           <div className="relative mb-14">
             <button
-              className="absolute top-0 right-0 bg-teal-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-[10%] mb-8"
+              className="absolute top-0 right-0 bg-teal-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded w-[10%] mb-8"
               onClick={handleAddCourse}
             >
               Add Course
@@ -99,29 +111,29 @@ const TableComponent = () => {
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200 pr-20">
-                <thead className="bg-gray-50">
+                <thead className="bg-teal-600">
                   <tr>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-200 uppercase tracking-wider"
                     >
                       Title
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-200 uppercase tracking-wider"
                     >
                       Description
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-200 uppercase tracking-wider"
                     >
                       Instructor
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-200 uppercase tracking-wider"
                     >
                       Category
                     </th>
@@ -135,7 +147,7 @@ const TableComponent = () => {
                     <tr key={course.id}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                          {course.title}
+                          {course.tittle}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -155,12 +167,12 @@ const TableComponent = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <Link to={`/EditCourse/${course._id}`}>
-                          <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2">
+                          <button className="bg-teal-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2">
                             Edit
                           </button>
                         </Link>
                         <button
-                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                          className="bg-teal-800 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                           onClick={() => handleDeleteCourse(course._id)}
                         >
                           Delete

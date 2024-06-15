@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios'; // Import axios for HTTP requests
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -39,7 +39,6 @@ const Login = () => {
       const response = await axios.post(
         'https://parents-follow-u.onrender.com/followup/user/signin',
         {
-          name: username, // Assuming "name" is equivalent to "username"
           email: username,
           password: password,
         },
@@ -52,8 +51,15 @@ const Login = () => {
       );
 
       if (response.status === 200) {
+        const { role } = response.data;
         alert('Login successful!');
-        navigate('/Dashboard'); // Redirect to Dashboard after successful login
+        if (role === 'admin') {
+          navigate('/Dashboard');
+        } else if (role === 'parent') {
+          navigate('/dash');
+        } else {
+          navigate('/Dashboard');
+        }
       } else {
         throw new Error('Login failed');
       }
