@@ -23,6 +23,12 @@ import ConfirmNewPass from './components/authoPages/ComfirmNewPass';
 import OTP from './components/authoPages/OTP';
 import EditCourse from './components/shared/course/EditCourse';
 import Messages from './components/shared/Messages';
+import AddB from './components/shared/course/AddB';
+import UpdateB from './components/Parentdash/UpdateB';
+import BookAd from './components/shared/BookAd';
+import BookDetail from './components/shared/course/BookDetail';
+import AddParent from './components/shared/course/AddParent';
+
 const Layout = () => {
   return (
     <>
@@ -43,7 +49,9 @@ const App = () => {
               <Route path="/" element={<LandingPage />} />
               <Route path="/" element={<Home />} />
               <Route path="About" element={<About />} />
+
               <Route path="level" element={<Level />} />
+
               <Route path="Contact" element={<Contact />} />
             </Route>
             
@@ -57,7 +65,12 @@ const App = () => {
             <Route path="/" element={<Lay />}>
               <Route path="dashboard" element={<DashBoard />} />
               <Route path="parent" element={<Parent />} />
-              <Route path="course" element={<Course />} />
+              <Route path="AddParent" element={<AddParent />} />
+              <Route path="Course" element={<Course />} />
+              <Route path="BookAd" element={<BookAd />} />
+              <Route path="Level" element={<Level />} />
+              <Route path="AddB" element={<AddB />} />
+              <Route path="BookDetail" element={<BookDetail />} />
               <Route path="EditCourse/:id" element={<EditCourse />} />
               <Route path="Dcourse" element={<Dcourse />} />
               <Route path="instructor" element={<Instructors />} />
@@ -67,6 +80,8 @@ const App = () => {
             <Route path="/" element={<Play />}>
               <Route path="dash" element={<Dash />} />
               <Route path="book" element={<Books />} />
+
+              <Route path="UpdateB" element={<UpdateB />} />
               <Route path="pinstructor" element={<Pinstructor />} />
             </Route>
           </Routes>

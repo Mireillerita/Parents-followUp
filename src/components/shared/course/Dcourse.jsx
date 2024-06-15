@@ -14,7 +14,9 @@ const Dcourse = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
     const formData = {
+
       tittle  : title,
+
       description: description,
       instructor: instructor,
       category: category,

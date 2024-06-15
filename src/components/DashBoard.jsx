@@ -1,8 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Legend,
+} from 'recharts';
 
-// Sample data for the pie chart
 const pieChartData = [
   { name: 'Activity A', students: 400 },
   { name: 'Activity B', students: 700 },
@@ -10,10 +21,8 @@ const pieChartData = [
   { name: 'Activity D', students: 1000 },
 ];
 
-// Colors for the pie chart
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
-// Sample data for the bar chart
 const barChartData = [
   { activity: 'A', count: 120 },
   { activity: 'B', count: 95 },
@@ -23,7 +32,14 @@ const barChartData = [
 
 function DashBoard() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
           <Pie
@@ -37,7 +53,10 @@ function DashBoard() {
             label
           >
             {pieChartData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
             ))}
           </Pie>
           <Tooltip />

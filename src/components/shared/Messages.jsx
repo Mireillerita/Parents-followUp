@@ -4,7 +4,9 @@ import axios from 'axios';
 const Messages = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState('');
+
 
   useEffect(() => {
     fetchMessages();
@@ -12,7 +14,9 @@ const Messages = () => {
 
   const fetchMessages = async () => {
     try {
+
       const response = await axios.get('https://parents-follow-u.onrender.com/followup/contactus/listMessage');
+
       if (Array.isArray(response.data)) {
         setMessages(response.data);
       } else {
@@ -20,14 +24,17 @@ const Messages = () => {
       }
       setLoading(false);
     } catch (error) {
+
       console.error("Fetch messages error:", error.response?.data || error.message);
       setError(error.response?.data?.message || 'An error occurred while fetching messages.');
+
       setLoading(false);
     }
   };
 
   const deleteMessage = async (id) => {
     try {
+
       await axios.delete(`https://parents-follow-u.onrender.com/followup/contactus/delete/${id}`);
       const updatedMessages = messages.filter(message => message.id!== id);
       setMessages(updatedMessages);
@@ -35,10 +42,12 @@ const Messages = () => {
     } catch (error) {
       console.error("Error deleting message:", error);
       setError(error.response?.data?.message || 'An error occurred while deleting the message.');
+
     }
   };
 
   if (loading) return <p className="text-center mt-4">Loading...</p>;
+
   if (error) return <p className="text-center text-red-500 mt-4">Error loading messages: {error}</p>;
 
   return (
@@ -61,6 +70,7 @@ const Messages = () => {
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );
