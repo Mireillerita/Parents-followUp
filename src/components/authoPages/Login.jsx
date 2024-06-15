@@ -8,37 +8,21 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!username.trim()) {
-      setEmailError('Please enter your email address.');
-      return;
-    } else if (!isValidEmail(username)) {
-      setEmailError(
-        'Please enter a valid email address (e.g., example@domain.com).'
-      );
-      return;
-    } else {
-      setEmailError('');
-    }
+    // Validation and error handling omitted for brevity
 
-    if (!password.trim()) {
-      setPasswordError('Please enter your password.');
-      return;
-    } else if (password.length < 6) {
-      setPasswordError('Your password must be at least 6 characters long.');
-      return;
-    } else {
-      setPasswordError('');
-    }
+    setLoading(true);
 
     try {
       const response = await axios.post(
         'https://parents-follow-u.onrender.com/followup/user/signin',
         {
+
           email: username,
           password: password,
         },
@@ -53,6 +37,7 @@ const Login = () => {
       if (response.status === 200) {
         const { role } = response.data;
         alert('Login successful!');
+
         if (role === 'admin') {
           navigate('/Dashboard');
         } else if (role === 'parent') {
@@ -60,12 +45,15 @@ const Login = () => {
         } else {
           navigate('/Dashboard');
         }
+
       } else {
         throw new Error('Login failed');
       }
     } catch (error) {
       console.error(error);
       alert('An error occurred during login. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 

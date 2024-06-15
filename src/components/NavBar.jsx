@@ -33,9 +33,9 @@ const NavBar = () => {
         </NavLink>
         <NavLink to="/level" className="hover:text-teal-600 mx-2">
           Levels
+
         </NavLink>
-        
-         
+
         <NavLink to="/Contact" className="hover:text-teal-600 mx-2">
           Contact
         </NavLink>
@@ -69,7 +69,7 @@ const NavBar = () => {
               className="hover:text-teal-600 block"
               onClick={toggleMenu}
             >
-              Courses
+              Level
             </NavLink>
             {/* <NavLink
               to="/Pages"

@@ -30,6 +30,12 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     path: '/instructor',
     icon: <PiChalkboardTeacherLight />,
   },
+  {
+    key: 'books',
+    label: 'BOOKS',
+    path: '/BookAd',
+    icon: <PiChalkboardTeacherLight />,
+  },
   // {
   // 	key: 'transactions',
   // 	label: 'Transactions',
