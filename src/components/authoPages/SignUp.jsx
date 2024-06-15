@@ -44,7 +44,7 @@ const Signup = () => {
       );
       console.log('Response data:', response.data);
       alert('Signup successful!');
-      navigate('/login');
+      navigate('/Login');
     } catch (error) {
       console.error(
         'Error response:',
