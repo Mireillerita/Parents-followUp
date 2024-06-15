@@ -7,7 +7,8 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState('parent'); // Default to 'parent'
+  const [role, setRole] = useState(''); // Default to 'parent'
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -23,6 +24,7 @@ const Signup = () => {
       return;
     }
 
+
     const form = {
       name,
       email,
@@ -31,6 +33,7 @@ const Signup = () => {
       role,
     };
     console.log('Form data:', form);
+
 
     try {
       const response = await axios.post(
@@ -42,6 +45,7 @@ const Signup = () => {
           },
         }
       );
+
       console.log('Response data:', response.data);
       alert('Signup successful!');
       navigate('/Login');
@@ -51,6 +55,7 @@ const Signup = () => {
         error.response ? error.response.data : error.message
       );
       alert('An error occurred during signup. Please try again.');
+
     }
   };
 
@@ -111,6 +116,9 @@ const Signup = () => {
               className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-teal-600"
               required
             >
+              <option value="" disabled>
+                Select Role
+              </option>
               <option value="parent">Parent</option>
               <option value="instructor">Instructor</option>
               <option value="admin">Admin</option>
@@ -119,8 +127,9 @@ const Signup = () => {
           <button
             type="submit"
             className="w-full py-2 rounded-md bg-teal-600 text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+            disabled={isLoading}
           >
-            Sign Up
+            {isLoading ? 'Signing Up...' : 'Sign Up'}
           </button>
         </form>
       </div>

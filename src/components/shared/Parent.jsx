@@ -29,6 +29,7 @@ const Dcourse = () => {
 
   const fetchParentById = async (id) => {
     try {
+
       setSelectedParent(parentDetails);
       setIsLoading(false);
     } catch (error) {

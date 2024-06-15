@@ -15,6 +15,7 @@ const Dcourse = () => {
     e.preventDefault();
     const formData = {
       tittle  : title,
+
       description: description,
       instructor: instructor,
       category: category,
